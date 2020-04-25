@@ -10,8 +10,8 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar color="primary" class="top-navbar">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -23,6 +23,29 @@
         <!--<mat-icon aria-label="app logo" svgIcon="[APP-LOGO-SVG]"></mat-icon>-->
         Pet Tracker
       </span>
+      <div class="nav-group-right logged-in"
+            *ngIf="auth.user$ | async as user else login">
+        <span>{{ user.displayName }}</span>
+        <button
+                class="nav-btn"
+                mat-raised-button
+                color="secondary"
+                (click)="auth.logout()">
+          Logout
+        </button>
+      </div>
+
+      <ng-template #login>
+        <div class="nav-group-right">
+          <button
+                  class="nav-btn"
+                  mat-raised-button
+                  color="secondary"
+                  (click)="auth.login()">
+            Login
+          </button>
+        </div>
+      </ng-template>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="content-wrapper">
