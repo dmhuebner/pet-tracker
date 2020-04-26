@@ -11,10 +11,10 @@ export class AuthService {
 
   user$ = this.authService.user;
 
-  login() {
-    this.authService.signInWithPopup(new auth.GoogleAuthProvider());
+  login(): Promise<any> {
+    return this.authService.signInWithPopup(new auth.GoogleAuthProvider());
   }
-  logout() {
-    this.authService.signOut();
+  logout(): Promise<any> {
+    return this.authService.signOut();
   }
 }

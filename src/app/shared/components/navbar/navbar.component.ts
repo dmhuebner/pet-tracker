@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,21 @@ export class NavbarComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-              public auth: AuthService) {}
+              public auth: AuthService,
+              private router: Router) {
+
+  }
+
+  login(): Promise<any> {
+    return this.auth.login().then(() => {
+      this.router.navigate(['/home'])
+    });
+  }
+
+  logout(): Promise<any> {
+    return this.auth.logout().then(() => {
+      this.router.navigate(['/login'])
+    });
+  }
 
 }

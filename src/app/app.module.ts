@@ -9,12 +9,18 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CoreModule } from './shared/core.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AboutComponent } from './pages/about/about.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AccountModule } from './features/account/account.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,9 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     LayoutModule,
     CoreModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
+    AccountModule
   ],
   providers: [],
   bootstrap: [AppComponent]
