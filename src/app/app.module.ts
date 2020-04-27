@@ -13,6 +13,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AccountModule } from './features/account/account.module';
+import { PetModule } from './features/pet/pet.module';
 
 @NgModule({
   declarations: [
@@ -22,16 +23,17 @@ import { AccountModule } from './features/account/account.module';
     AboutComponent,
     LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    CoreModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence(),
-    AccountModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        CoreModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule.enablePersistence(),
+        AccountModule,
+        PetModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

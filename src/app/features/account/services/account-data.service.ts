@@ -12,7 +12,7 @@ export class AccountDataService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getAccountData(userId: string): Observable<any> {
+  getAccountData(userId: string): Observable<Account> {
     this.accountCollectionRef = this.afs.collection('accounts');
     const accountDoc = this.accountCollectionRef.doc(userId);
     console.log('accountDoc', accountDoc);

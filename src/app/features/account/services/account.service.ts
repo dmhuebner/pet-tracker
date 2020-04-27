@@ -10,17 +10,20 @@ import { Account } from '../interfaces/account.interface';
 })
 export class AccountService {
 
+  account$: Observable<Account>;
+
   constructor(private dataService: AccountDataService,
               private stateService: AccountStateService) { }
 
-  getAccount(user: any): Observable<any> {
+  getAccount(user: any): Observable<Account> {
     if (user) {
         const accountData$ = this.dataService.getAccountData(user.uid);
         return accountData$.pipe(
             switchMap((accountData) => {
                 if (accountData) {
                     this.stateService.updateAccount(accountData);
-                    return this.stateService.account$;
+                    this.account$ = this.stateService.account$;
+                    return this.account$;
                 } else {
                     return this.createAccount(user);
                 }
