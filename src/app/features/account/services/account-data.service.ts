@@ -28,4 +28,8 @@ export class AccountDataService {
     };
     return this.accountCollectionRef.doc(user.uid).set(newAccount)
   }
+
+  updateAccount(updatedAccount: Account): Observable<Account> {
+    return this.accountCollectionRef.doc(updatedAccount.userId).update(updatedAccount);
+  }
 }

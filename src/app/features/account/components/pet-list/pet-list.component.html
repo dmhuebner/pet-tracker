@@ -1,0 +1,11 @@
+<!--{{pets | json}}-->
+<div class="pet-list-container"
+     *ngIf="pets && pets.length">
+    <div class="pet" *ngFor="let pet of pets">
+        <h4 class="pet-name">
+            {{pet.name}}
+<!--            <span class="breed"> - {{pet.breed}}</span>-->
+        </h4>
+        <mat-divider></mat-divider>
+    </div>
+</div>

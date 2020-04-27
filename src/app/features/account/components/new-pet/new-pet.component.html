@@ -1,0 +1,38 @@
+<section class="new-pet-form">
+    <h3>Add New Pet</h3>
+    <form [formGroup]="newPetForm" (ngSubmit)="addedNewPet()">
+        <mat-form-field appearance="outline">
+            <mat-label>Pet Name</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Animal Type</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   formControlName="animalType">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Breed</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   formControlName="breed">
+        </mat-form-field>
+        <div class="btn-group">
+            <button mat-raised-button
+                    color="secondary"
+                    (click)="close()"
+                    type="button">
+                Cancel
+            </button>
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="newPetForm.invalid"
+                    type="submit">
+                Add Pet
+            </button>
+        </div>
+    </form>
+<!--    <pre>{{newPetForm.value | json}}</pre>-->
+</section>

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AccountDataService } from './account-data.service';
 import { AccountStateService } from './account-state.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { Account } from '../interfaces/account.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,11 @@ export class AccountService {
     );
   }
 
-  private createAccount(user: any): Observable<any> {
+    updateAccount(updatedAccount: Account): Observable<Account> {
+        return this.dataService.updateAccount(updatedAccount);
+    }
+
+  private createAccount(user: any): Observable<Account> {
       return this.dataService.createAccount(user);
   }
 }

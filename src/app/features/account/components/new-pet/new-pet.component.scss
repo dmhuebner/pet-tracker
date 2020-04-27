@@ -1,0 +1,15 @@
+.new-pet-form {
+  display: flex;
+  flex-direction: column;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .btn-group {
+
+    button {
+      margin: 1rem;
+    }
+  }
+}

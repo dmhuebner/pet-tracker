@@ -1,2 +1,22 @@
-<p>account-container works!</p>
-{{account | json}}
+<section class="account-section" *ngIf="account">
+    <aside class="account-pets">
+<!--        {{account | json}}-->
+        <h3>
+            My Pets
+            <button mat-fab
+                    class="add-pet-btn"
+                    color="primary"
+                    aria-label="Add a pet"
+                    (click)="openAddPetDialog()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </h3>
+        <app-pet-list
+                [pets]="account.pets">
+        </app-pet-list>
+    </aside>
+    <app-user-summary
+            [userImgUrl]="userImageUrl"
+            [userName]="account.name">
+    </app-user-summary>
+</section>
