@@ -5,12 +5,27 @@
   .pet {
     width: 100%;
     padding: 0 1rem;
-  }
+    cursor: pointer;
 
-  .pet-name {
+    .pet-name {
+      margin: 0;
+      padding: 1rem;
 
-    .breed {
-      color: #888;
+      &:hover {
+        background-color: #ddd;
+      }
+
+      &.selected {
+        background-color: #eee;
+      }
+
+      .breed {
+        color: #888;
+      }
+
+      .selected-pet {
+        color: green;
+      }
     }
   }
 }

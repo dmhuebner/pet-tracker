@@ -5,8 +5,8 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item class="nav-item" routerLink="/home" routerLinkActive="active" href="#">
-        <mat-icon aria-label="Home">home</mat-icon>
-        Home
+        <mat-icon aria-label="Home">fingerprint</mat-icon>
+        Profile
       </a>
       <a mat-list-item class="nav-item" routerLink="/account" routerLinkActive="active" href="#">
         <mat-icon aria-label="Home">account_circle</mat-icon>
@@ -30,7 +30,9 @@
       </span>
       <div class="nav-group-right logged-in"
             *ngIf="auth.user$ | async as user else loginButton">
-        <span>{{ user.displayName }}</span>
+        <span *ngIf="account$ | async as account">
+          {{ account.selectedPet }}
+        </span>
         <button
                 class="nav-btn"
                 mat-raised-button

@@ -1,10 +1,18 @@
 <!--{{pets | json}}-->
 <div class="pet-list-container"
      *ngIf="pets && pets.length">
-    <div class="pet" *ngFor="let pet of pets">
-        <h4 class="pet-name">
+    <div class="pet"
+         *ngFor="let pet of pets"
+        (click)="onSelectPet(pet.name)">
+        <h4 class="pet-name" [class.selected]="pet.name === selectedPet">
             {{pet.name}}
-<!--            <span class="breed"> - {{pet.breed}}</span>-->
+            <span class="breed">
+                 - {{pet.breed || pet.animalType | lowercase}}
+            </span>
+            <mat-icon *ngIf="pet.name === selectedPet"
+                      class="selected-pet">
+                check_circle
+            </mat-icon>
         </h4>
         <mat-divider></mat-divider>
     </div>

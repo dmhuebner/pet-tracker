@@ -14,17 +14,19 @@ export class AccountService {
               private stateService: AccountStateService) { }
 
   getAccount(user: any): Observable<any> {
-    const accountData$ = this.dataService.getAccountData(user.uid);
-    return accountData$.pipe(
-        switchMap((accountData) => {
-            if (accountData) {
-                this.stateService.updateAccount(accountData);
-                return this.stateService.account$;
-            } else {
-                return this.createAccount(user);
-            }
-        })
-    );
+    if (user) {
+        const accountData$ = this.dataService.getAccountData(user.uid);
+        return accountData$.pipe(
+            switchMap((accountData) => {
+                if (accountData) {
+                    this.stateService.updateAccount(accountData);
+                    return this.stateService.account$;
+                } else {
+                    return this.createAccount(user);
+                }
+            })
+        );
+    }
   }
 
     updateAccount(updatedAccount: Account): Observable<Account> {

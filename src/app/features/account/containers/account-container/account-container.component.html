@@ -12,7 +12,9 @@
             </button>
         </h3>
         <app-pet-list
-                [pets]="account.pets">
+                [pets]="account.pets"
+                [selectedPet]="account.selectedPet"
+                (petSelected)="selectPet($event)">
         </app-pet-list>
     </aside>
     <app-user-summary

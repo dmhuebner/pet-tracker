@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pet-list',
@@ -8,10 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PetListComponent implements OnInit {
 
   @Input() pets: any[];
+  @Input() selectedPet: string;
+
+  @Output() petSelected = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSelectPet(petName: string) {
+    this.petSelected.emit(petName);
   }
 
 }

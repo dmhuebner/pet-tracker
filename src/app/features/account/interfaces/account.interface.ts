@@ -2,5 +2,6 @@ export interface Account {
     userId: string;
     name: string;
     email: string;
-    pets: any[]
+    pets: any[];
+    selectedPet: string;
 }
