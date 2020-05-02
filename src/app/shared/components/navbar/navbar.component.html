@@ -4,11 +4,20 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item class="nav-item" routerLink="/home" routerLinkActive="active" href="#">
-        <mat-icon aria-label="Home">fingerprint</mat-icon>
+      <a mat-list-item
+         *ngIf="accountService.account$ | async as account"
+         class="nav-item"
+         routerLink="/profile/{{account.selectedPet}}"
+         routerLinkActive="active"
+         href="#">
+        <mat-icon aria-label="profile">fingerprint</mat-icon>
         Profile
       </a>
-      <a mat-list-item class="nav-item" routerLink="/account" routerLinkActive="active" href="#">
+      <a mat-list-item
+         class="nav-item"
+         routerLink="/account"
+         routerLinkActive="active"
+         href="#">
         <mat-icon aria-label="Home">account_circle</mat-icon>
         Account
       </a>
@@ -30,7 +39,7 @@
       </span>
       <div class="nav-group-right logged-in"
             *ngIf="auth.user$ | async as user else loginButton">
-        <span *ngIf="account$ | async as account">
+        <span *ngIf="accountService.account$ | async as account">
           {{ account.selectedPet }}
         </span>
         <button

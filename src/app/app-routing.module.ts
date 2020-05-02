@@ -17,7 +17,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'home',
+    path: 'profile/:pet',
     component: HomeComponent,
     canActivate: [AngularFireAuthGuard]
   },

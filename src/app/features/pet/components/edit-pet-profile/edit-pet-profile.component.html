@@ -1,0 +1,27 @@
+<section class="pet-profile-container">
+    <mat-card class="example-card" *ngIf="pet">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{pet.name}}</mat-card-title>
+            <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
+            <div>
+                <button mat-raised-button (click)="onSaveClicked()">
+                    Edit
+                </button>
+            </div>
+        </mat-card-header>
+        <!--        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+        <form (ngSubmit)="savePetProfile()">
+
+        </form>
+        <mat-card-content>
+        </mat-card-content>
+        <!--            <p class="edit-description">-->
+        <!--                Edit Description-->
+        <!--            </p>-->
+        <mat-card-actions>
+            <!--            -->
+        </mat-card-actions>
+    </mat-card>
+
+</section>

@@ -19,18 +19,25 @@
                    autocomplete="off"
                    formControlName="breed">
         </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput
+                      autocomplete="off"
+                      formControlName="description">
+            </textarea>
+        </mat-form-field>
         <div class="btn-group">
-            <button mat-raised-button
-                    color="secondary"
-                    (click)="close()"
-                    type="button">
-                Cancel
-            </button>
             <button mat-raised-button
                     color="primary"
                     [disabled]="newPetForm.invalid"
                     type="submit">
                 Add Pet
+            </button>
+            <button mat-raised-button
+                    color="secondary"
+                    (click)="close()"
+                    type="button">
+                Cancel
             </button>
         </div>
     </form>

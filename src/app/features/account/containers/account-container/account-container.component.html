@@ -1,21 +1,31 @@
 <section class="account-section" *ngIf="account">
     <aside class="account-pets">
-<!--        {{account | json}}-->
-        <h3>
-            My Pets
-            <button mat-fab
-                    class="add-pet-btn"
-                    color="primary"
-                    aria-label="Add a pet"
-                    (click)="openAddPetDialog()">
-                <mat-icon>add</mat-icon>
-            </button>
-        </h3>
-        <app-pet-list
-                [pets]="account.pets"
-                [selectedPet]="account.selectedPet"
-                (petSelected)="selectPet($event)">
-        </app-pet-list>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                    My Pets
+                    <button mat-fab
+                            class="add-pet-btn"
+                            color="primary"
+                            aria-label="Add a pet"
+                            (click)="openAddPetDialog()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <!--        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+            <app-pet-list
+                    [pets]="account.pets"
+                    [selectedPet]="account.selectedPet"
+                    (petSelected)="selectPet($event)">
+            </app-pet-list>
+            <mat-card-content></mat-card-content>
+            <mat-card-actions>
+                <!--            -->
+            </mat-card-actions>
+        </mat-card>
     </aside>
     <app-user-summary
             [userImgUrl]="userImageUrl"

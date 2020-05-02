@@ -13,7 +13,9 @@ export class AccountService {
   account$: Observable<Account>;
 
   constructor(private dataService: AccountDataService,
-              private stateService: AccountStateService) { }
+              private stateService: AccountStateService) {
+      this.account$ = this.stateService.account$;
+  }
 
   getAccount(user: any): Observable<Account> {
     if (user) {
@@ -22,8 +24,7 @@ export class AccountService {
             switchMap((accountData) => {
                 if (accountData) {
                     this.stateService.updateAccount(accountData);
-                    this.account$ = this.stateService.account$;
-                    return this.account$;
+                    return this.stateService.account$;
                 } else {
                     return this.createAccount(user);
                 }
@@ -32,9 +33,9 @@ export class AccountService {
     }
   }
 
-    updateAccount(updatedAccount: Account): Observable<Account> {
-        return this.dataService.updateAccount(updatedAccount);
-    }
+  updateAccount(updatedAccount: Account): Observable<Account> {
+      return this.dataService.updateAccount(updatedAccount);
+  }
 
   private createAccount(user: any): Observable<Account> {
       return this.dataService.createAccount(user);

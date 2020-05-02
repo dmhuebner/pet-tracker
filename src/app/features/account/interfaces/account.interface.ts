@@ -1,9 +1,9 @@
-import { Pet } from '../../pet/interfaces/pet.interface';
+import { PetRef } from './pet-ref.interface';
 
 export interface Account {
     userId: string;
     name: string;
     email: string;
-    pets: Pet[];
+    pets: PetRef[];
     selectedPet: string;
 }

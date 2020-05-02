@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { EMPTY, Subject } from 'rxjs';
+import { EMPTY, Observable, Subject } from 'rxjs';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Account } from '../../interfaces/account.interface';
 import { GravatarService } from '../../services/gravatar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewPetComponent } from '../../components/new-pet/new-pet.component';
+import { Pet } from '../../../pet/interfaces/pet.interface';
+import { PetService } from '../../../pet/services/pet.service';
 
 @Component({
   selector: 'app-account-container',
@@ -22,7 +24,8 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
   constructor(public accountService: AccountService,
               private auth: AuthService,
               private gravatarService: GravatarService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private petService: PetService) { }
 
   ngOnInit(): void {
     this.auth.user$.pipe(
@@ -49,12 +52,7 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().pipe(
         takeUntil(this.unsubscribe$)
     ).subscribe(newPet => {
-        console.log('New Pet', newPet);
-        if (newPet) {
-            const updatedAccount = {...this.account};
-            updatedAccount.pets.push(newPet);
-            this.accountService.updateAccount(updatedAccount);
-        }
+        this.addNewPet(newPet);
     });
   }
 
@@ -62,6 +60,29 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
       const updatedAccount = {...this.account};
       updatedAccount.selectedPet = petName;
       this.accountService.updateAccount(updatedAccount);
+  }
+
+  private addNewPet(newPet: Pet): Promise<Pet> {
+      if (newPet) {
+          newPet.userId = this.account.userId;
+          console.log('New Pet', newPet);
+          return this.petService.createPet(newPet, this.account.userId).then(petId => {
+              return this.addPetRefToAccount(newPet, petId);
+          });
+      }
+  }
+
+  private addPetRefToAccount(newPet: Pet, petId: string): Pet {
+      const updatedAccount = {...this.account};
+      const newPetRef = {
+          name: newPet.name,
+          breed: newPet.breed,
+          animalType: newPet.animalType,
+          id: petId
+      };
+      updatedAccount.pets.push(newPetRef);
+      this.accountService.updateAccount(updatedAccount);
+      return newPet;
   }
 
 }

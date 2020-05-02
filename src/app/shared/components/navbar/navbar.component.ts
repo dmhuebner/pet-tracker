@@ -19,8 +19,6 @@ export class NavbarComponent implements OnInit {
       map(result => result.matches)
     );
 
-  account$: Observable<Account>;
-
   constructor(private breakpointObserver: BreakpointObserver,
               public auth: AuthService,
               private router: Router,
@@ -29,16 +27,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.user$.pipe(
-        tap((user) => {
-          this.account$ = this.accountService.getAccount(user);
-        })
-    ).subscribe();
   }
 
   login(): Promise<any> {
     return this.auth.login().then(() => {
-      this.router.navigate(['/home'])
+      this.router.navigate(['/account'])
     });
   }
 

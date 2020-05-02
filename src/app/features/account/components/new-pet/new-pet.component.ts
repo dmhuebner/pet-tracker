@@ -19,6 +19,7 @@ export class NewPetComponent implements OnInit {
       name: ['', [Validators.required]],
       animalType: ['', [Validators.required]],
       breed: ['', []],
+      description: ['', []],
     });
   }
 

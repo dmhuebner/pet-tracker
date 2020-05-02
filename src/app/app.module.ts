@@ -14,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AccountModule } from './features/account/account.module';
 import { PetModule } from './features/pet/pet.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PetModule } from './features/pet/pet.module';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule.enablePersistence(),
         AccountModule,
-        PetModule
+        PetModule,
+        MatCardModule
     ],
   providers: [],
   bootstrap: [AppComponent]

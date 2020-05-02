@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { AccountService } from '../../features/account/services/account.service';
 import { Account } from '../../features/account/interfaces/account.interface';
-import { Pet } from '../../features/pet/interfaces/pet.interface';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { PetRef } from '../../features/account/interfaces/pet-ref.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  selectedPet: Pet;
+  selectedPet: PetRef;
   unsubscribe$ = new Subject();
 
   constructor(private authService: AuthService,
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next(true);
   }
 
-  private getSelectedPet(account: Account): Pet {
+  private getSelectedPet(account: Account): PetRef {
     return account.pets.find(pet => pet.name === account.selectedPet);
   }
 

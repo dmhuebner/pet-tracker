@@ -4,7 +4,8 @@
     <div class="pet"
          *ngFor="let pet of pets"
         (click)="onSelectPet(pet.name)">
-        <h4 class="pet-name" [class.selected]="pet.name === selectedPet">
+        <h4 class="pet-name"
+            [class.selected]="pet.name === selectedPet">
             {{pet.name}}
             <span class="breed">
                  - {{pet.breed || pet.animalType | lowercase}}
@@ -14,6 +15,6 @@
                 check_circle
             </mat-icon>
         </h4>
-        <mat-divider></mat-divider>
+<!--        <mat-divider></mat-divider>-->
     </div>
 </div>
