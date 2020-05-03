@@ -14,9 +14,15 @@ import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-    declarations: [PetProfileContainerComponent, PetProfileComponent, EditPetProfileComponent, PetProfileFormComponent],
+    declarations: [
+        PetProfileContainerComponent,
+        PetProfileComponent,
+        EditPetProfileComponent,
+        PetProfileFormComponent
+    ],
     exports: [
-        PetProfileContainerComponent
+        PetProfileContainerComponent,
+        PetProfileFormComponent
     ],
     imports: [
         CommonModule,
@@ -24,7 +30,6 @@ import { MatInputModule } from '@angular/material/input';
         MatButtonModule,
         MatFormFieldModule,
         ReactiveFormsModule,
-        AccountModule,
         MatInputModule,
     ]
 })

@@ -6,10 +6,10 @@ import { switchMap, takeUntil } from 'rxjs/operators';
 import { Account } from '../../interfaces/account.interface';
 import { GravatarService } from '../../services/gravatar.service';
 import { MatDialog } from '@angular/material/dialog';
-import { NewPetComponent } from '../../components/new-pet/new-pet.component';
 import { Pet } from '../../../pet/interfaces/pet.interface';
 import { PetService } from '../../../pet/services/pet.service';
 import { Router } from '@angular/router';
+import { NewPetContainerComponent } from '../new-pet-container/new-pet-container.component';
 
 @Component({
   selector: 'app-account-container',
@@ -47,7 +47,7 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
   }
 
   openAddPetDialog(): void {
-    const dialogRef = this.dialog.open(NewPetComponent, {
+    const dialogRef = this.dialog.open(NewPetContainerComponent, {
         minWidth: '400px'
     });
 
