@@ -1,0 +1,31 @@
+.pet-list-container {
+  border: 1px solid #eee;
+  padding: 1rem 3rem 2rem 3rem;
+
+  .pet {
+    width: 100%;
+    padding: 0 1rem;
+    cursor: pointer;
+
+    .pet-name {
+      margin: 0;
+      padding: 1rem;
+
+      &:hover {
+        background-color: #ddd;
+      }
+
+      &.selected {
+        background-color: #eee;
+      }
+
+      .breed {
+        color: #888;
+      }
+
+      .selected-pet {
+        color: green;
+      }
+    }
+  }
+}

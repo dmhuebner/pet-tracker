@@ -9,21 +9,33 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CoreModule } from './shared/core.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AboutComponent } from './pages/about/about.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AccountModule } from './features/account/account.module';
+import { PetModule } from './features/pet/pet.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutComponent,
+    LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    CoreModule,
-    AngularFireModule.initializeApp(environment.firebase)
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        CoreModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule.enablePersistence(),
+        AccountModule,
+        PetModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

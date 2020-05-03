@@ -1,0 +1,15 @@
+.account-section {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  .account-pets {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+    .add-pet-btn {
+      margin-left: 1.5rem;
+    }
+  }
+}
