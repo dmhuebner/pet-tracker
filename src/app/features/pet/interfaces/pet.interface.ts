@@ -10,4 +10,5 @@ export interface Pet {
     description?: string;
     birthday?: Timestamp;
     color?: string;
+    sex?: string;
 }

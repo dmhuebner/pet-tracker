@@ -40,6 +40,7 @@ export class PetProfileFormComponent implements OnInit {
       color: [pet ? pet.color : '', []],
       description: [pet ? pet.description : '', []],
       birthday: [pet && pet.birthday ? pet.birthday.toDate() : '', []],
+      sex: [pet ? pet.sex : '', []],
     });
   }
 
