@@ -5,4 +5,5 @@ export interface Pet {
     animalType: string;
     breed?: string;
     description?: string;
+    birthday?: string;
 }

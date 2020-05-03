@@ -4,6 +4,7 @@
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{pet.name}}</mat-card-title>
             <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
+            <mat-card-subtitle>{{pet.birthday}}</mat-card-subtitle>
             <div class="edit-btn">
                 <button mat-raised-button
                         (click)="onEditModeClicked()">
@@ -13,6 +14,9 @@
         </mat-card-header>
 <!--        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
         <mat-card-content *ngIf="pet.description">
+            <h4>Birthday:</h4>
+            <p>{{pet.birthday}}</p>
+            <h4>Description:</h4>
             <p>{{pet.description}}</p>
         </mat-card-content>
 <!--            <p class="edit-description">-->

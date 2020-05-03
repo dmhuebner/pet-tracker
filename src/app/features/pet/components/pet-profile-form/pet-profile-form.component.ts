@@ -38,6 +38,7 @@ export class PetProfileFormComponent implements OnInit {
       animalType: [pet ? pet.animalType : '', [Validators.required]],
       breed: [pet ? pet.breed : '', []],
       description: [pet ? pet.description : '', []],
+      birthday: [pet ? pet.birthday : '', []],
     });
   }
 
