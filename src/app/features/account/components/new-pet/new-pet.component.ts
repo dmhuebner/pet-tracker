@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Pet } from '../../../pet/interfaces/pet.interface';
 
 @Component({
   selector: 'app-new-pet',
@@ -8,6 +9,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./new-pet.component.scss']
 })
 export class NewPetComponent implements OnInit {
+
+  @Input() pet: Pet;
 
   newPetForm: FormGroup;
 

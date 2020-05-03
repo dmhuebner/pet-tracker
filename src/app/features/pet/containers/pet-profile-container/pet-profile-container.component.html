@@ -6,6 +6,7 @@
 <ng-template #editPetProfileUI>
     <app-edit-pet-profile
             [pet]="pet"
-            (editedPet)="onPetEdited($event)" )>
+            (editModeOff)="toggleEditMode()"
+            (editedPet)="onPetEdited($event)">
     </app-edit-pet-profile>
 </ng-template>

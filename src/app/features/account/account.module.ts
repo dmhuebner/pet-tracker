@@ -16,12 +16,12 @@ import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
-  declarations: [
-      AccountContainerComponent,
-      UserSummaryComponent,
-      PetListComponent,
-      NewPetComponent
-  ],
+    declarations: [
+        AccountContainerComponent,
+        UserSummaryComponent,
+        PetListComponent,
+        NewPetComponent
+    ],
     imports: [
         CommonModule,
         MatDividerModule,

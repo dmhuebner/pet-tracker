@@ -1,0 +1,36 @@
+.pet-form-container {
+  display: flex;
+  flex-direction: column;
+
+  .pet-form {
+
+    .short-field-row {
+      display: flex;
+
+      mat-form-field.short-width-field {
+        width: 100%;
+
+        &:nth-child(1) {
+          margin-right: 0.5rem;
+        }
+
+        &:nth-child(2) {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    mat-form-field {
+      &.full-width-field {
+        width: 100%;
+      }
+    }
+
+    .btn-group {
+
+      button {
+        margin: 1rem;
+      }
+    }
+  }
+}

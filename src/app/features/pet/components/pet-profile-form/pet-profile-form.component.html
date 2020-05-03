@@ -1,0 +1,48 @@
+<section class="pet-form-container">
+    <form [formGroup]="petForm" class="pet-form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Pet Name</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   required
+                   formControlName="name">
+        </mat-form-field>
+        <div class="short-field-row">
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Animal Type</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       required
+                       formControlName="animalType">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Breed</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="breed">
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Description</mat-label>
+            <textarea matInput
+                      autocomplete="off"
+                      formControlName="description">
+            </textarea>
+        </mat-form-field>
+        <div class="btn-group">
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="petForm.invalid"
+                    type="submit">
+                Add Pet
+            </button>
+            <button mat-raised-button
+                    color="secondary"
+                    (click)="cancel()"
+                    type="button">
+                Cancel
+            </button>
+        </div>
+    </form>
+    <!--    <pre>{{newPetForm.value | json}}</pre>-->
+</section>

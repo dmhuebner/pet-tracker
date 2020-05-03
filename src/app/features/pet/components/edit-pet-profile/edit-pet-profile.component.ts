@@ -11,7 +11,8 @@ export class EditPetProfileComponent implements OnInit {
 
   @Input() pet: Pet;
 
-  @Output() editedPet = new EventEmitter<Pet>()
+  @Output() editedPet = new EventEmitter<Pet>();
+  @Output() editModeOff = new EventEmitter<true>();
 
   petProfileForm: FormGroup;
 
@@ -30,9 +31,13 @@ export class EditPetProfileComponent implements OnInit {
     });
   }
 
-  savePetProfile() {
-    if (this.petProfileForm.valid) {
-      this.editedPet.emit(this.petProfileForm.value);
+  savePetProfile(petProfileForm: FormGroup) {
+    if (petProfileForm.valid) {
+      this.editedPet.emit(petProfileForm.value);
     }
+  }
+
+  turnEditModeOff() {
+    this.editModeOff.emit(true);
   }
 }

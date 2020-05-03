@@ -26,8 +26,17 @@ export class PetDataService {
       animalType: pet.animalType,
       breed: pet.breed,
       description: pet.description,
-      userId
+      userId,
+      id: null
     };
-    return this.petsCollectionRef.add(newPet).then(petDocRef => petDocRef.id);
+    return this.petsCollectionRef.add(newPet).then(petDocRef => {
+      newPet.id = petDocRef.id;
+      return this.updatePet(newPet);
+    }).then(updatedPet => updatedPet.id);
+  }
+
+  updatePet(updatedPet: Pet): Promise<Pet> {
+    console.log('updatedPet', updatedPet);
+    return this.petsCollectionRef.doc(updatedPet.id).update(updatedPet).then(() => updatedPet);
   }
 }

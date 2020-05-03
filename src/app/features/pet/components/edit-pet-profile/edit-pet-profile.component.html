@@ -1,19 +1,40 @@
 <section class="pet-profile-container">
     <mat-card class="example-card" *ngIf="pet">
-        <mat-card-header>
+        <mat-card-header class="card-header">
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{pet.name}}</mat-card-title>
             <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
-            <div>
-                <button mat-raised-button (click)="onSaveClicked()">
-                    Edit
-                </button>
+            <div class="save-btn">
+<!--                <button mat-raised-button-->
+<!--                        color="primary"-->
+<!--                        (click)="savePetProfile()">-->
+<!--                    Save-->
+<!--                </button>-->
             </div>
         </mat-card-header>
         <!--        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
-        <form (ngSubmit)="savePetProfile()">
-
-        </form>
+<!--        <form (ngSubmit)="savePetProfile()" [formGroup]="petProfileForm">-->
+<!--            <mat-form-field appearance="outline">-->
+<!--                <mat-label>Pet Name</mat-label>-->
+<!--                <input matInput-->
+<!--                       autocomplete="off"-->
+<!--                       required-->
+<!--                       formControlName="name">-->
+<!--            </mat-form-field>-->
+<!--            <mat-form-field appearance="outline">-->
+<!--                <mat-label>Animal Type</mat-label>-->
+<!--                <input matInput-->
+<!--                       autocomplete="off"-->
+<!--                       required-->
+<!--                       formControlName="animalType">-->
+<!--            </mat-form-field>-->
+<!--        </form>-->
+        <app-pet-profile-form
+                [pet]="pet"
+                [formTitle]="'Edit Profile'"
+                (formCancelled)="turnEditModeOff()"
+                (formSubmitted)="savePetProfile($event)">
+        </app-pet-profile-form>
         <mat-card-content>
         </mat-card-content>
         <!--            <p class="edit-description">-->

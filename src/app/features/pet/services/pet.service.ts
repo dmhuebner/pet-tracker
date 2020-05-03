@@ -26,9 +26,9 @@ export class PetService {
     );
   }
 
-  // updatePet(updatedPet: Pet): Observable<Pet> {
-  //   return this.petData.updatePet(updatedPet);
-  // }
+  updatePet(updatedPet: Pet): Promise<Pet> {
+    return this.petData.updatePet(updatedPet);
+  }
 
   createPet(pet: Pet, userId: string): Promise<string> {
     return this.petData.createPet(pet, userId);
