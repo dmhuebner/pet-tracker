@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GravatarService } from '../../pet/gravatar.service';
+import { DateFuncsService } from './date-funcs.service';
 
-describe('GravatarService', () => {
-  let service: GravatarService;
+describe('DateFuncsService', () => {
+  let service: DateFuncsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GravatarService);
+    service = TestBed.inject(DateFuncsService);
   });
 
   it('should be created', () => {

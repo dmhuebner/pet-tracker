@@ -22,6 +22,29 @@
                        formControlName="breed">
             </mat-form-field>
         </div>
+        <div class="short-field-row">
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Color</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="color">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Sex</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="sex">
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Birthday</mat-label>
+            <input matInput
+                   [matDatepicker]="birthdayPicker"
+                   autocomplete="off"
+                   formControlName="birthday">
+            <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
+            <mat-datepicker #birthdayPicker></mat-datepicker>
+        </mat-form-field>
         <mat-form-field appearance="outline" class="full-width-field">
             <mat-label>Description</mat-label>
             <textarea matInput

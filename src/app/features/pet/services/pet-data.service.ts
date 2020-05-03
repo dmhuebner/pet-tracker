@@ -21,14 +21,7 @@ export class PetDataService {
   }
 
   createPet(pet: Pet, userId: string): Promise<string> {
-    const newPet: Pet = {
-      name: pet.name,
-      animalType: pet.animalType,
-      breed: pet.breed,
-      description: pet.description,
-      userId,
-      id: null
-    };
+    const newPet = {...pet, userId, id: null};
     return this.petsCollectionRef.add(newPet).then(petDocRef => {
       newPet.id = petDocRef.id;
       return this.updatePet(newPet);

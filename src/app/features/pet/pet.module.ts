@@ -7,9 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditPetProfileComponent } from './components/edit-pet-profile/edit-pet-profile.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AccountModule } from '../account/account.module';
 import { PetProfileFormComponent } from './components/pet-profile-form/pet-profile-form.component';
 import { MatInputModule } from '@angular/material/input';
+import { BirthdayToAgePipe } from './pipes/birthday-to-age.pipe';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -18,7 +20,8 @@ import { MatInputModule } from '@angular/material/input';
         PetProfileContainerComponent,
         PetProfileComponent,
         EditPetProfileComponent,
-        PetProfileFormComponent
+        PetProfileFormComponent,
+        BirthdayToAgePipe
     ],
     exports: [
         PetProfileContainerComponent,
@@ -31,6 +34,8 @@ import { MatInputModule } from '@angular/material/input';
         MatFormFieldModule,
         ReactiveFormsModule,
         MatInputModule,
+        MatDatepickerModule,
+        MatDividerModule,
     ]
 })
 export class PetModule { }
