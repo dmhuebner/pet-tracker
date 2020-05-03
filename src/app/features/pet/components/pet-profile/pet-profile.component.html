@@ -1,10 +1,14 @@
 <section class="pet-profile-container">
-    <mat-card class="example-card" *ngIf="pet">
+    <mat-card class="profile-card" *ngIf="pet">
         <mat-card-header class="card-header">
-            <div mat-card-avatar class="example-header-image"></div>
+            <div mat-card-avatar class="profile-image">
+                <img src="https://via.placeholder.com/150" alt="Pet Profile Image">
+            </div>
             <mat-card-title>{{pet.name}}</mat-card-title>
-            <mat-card-subtitle>{{pet.breed}}</mat-card-subtitle>
-            <mat-card-subtitle>Age: {{pet.birthday | birthdayToAge}}</mat-card-subtitle>
+            <mat-card-subtitle>{{pet.breed}}<hr class="side-header-hr"></mat-card-subtitle>
+            <mat-card-subtitle><b>Age:</b> {{pet.birthday | birthdayToAge}}</mat-card-subtitle>
+            <mat-card-subtitle><b>Color:</b> {{pet.color}}</mat-card-subtitle>
+            <mat-card-subtitle><b>Birthday:</b> {{pet.birthday.toDate() | date : 'longDate'}}</mat-card-subtitle>
             <div class="edit-btn">
                 <button mat-raised-button
                         (click)="onEditModeClicked()">
@@ -13,10 +17,7 @@
             </div>
         </mat-card-header>
 <!--        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
-        <mat-card-content *ngIf="pet.description">
-            <h4>Birthday:</h4>
-            <p>{{pet.birthday.toDate() | date : 'longDate'}}</p>
-            <h4>Description:</h4>
+        <mat-card-content *ngIf="pet.description" class="card-content">
             <p>{{pet.description}}</p>
         </mat-card-content>
 <!--            <p class="edit-description">-->

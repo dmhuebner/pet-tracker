@@ -11,6 +11,7 @@ import { PetProfileFormComponent } from './components/pet-profile-form/pet-profi
 import { MatInputModule } from '@angular/material/input';
 import { BirthdayToAgePipe } from './pipes/birthday-to-age.pipe';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -34,6 +35,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
         ReactiveFormsModule,
         MatInputModule,
         MatDatepickerModule,
+        MatDividerModule,
     ]
 })
 export class PetModule { }

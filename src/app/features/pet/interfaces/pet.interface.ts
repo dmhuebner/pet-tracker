@@ -9,4 +9,5 @@ export interface Pet {
     breed?: string;
     description?: string;
     birthday?: Timestamp;
+    color?: string;
 }
