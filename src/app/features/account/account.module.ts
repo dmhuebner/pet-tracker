@@ -6,7 +6,6 @@ import { PetListComponent } from './components/pet-list/pet-list.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NewPetComponent } from './components/new-pet/new-pet.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,7 +21,6 @@ import { PetModule } from '../pet/pet.module';
         AccountContainerComponent,
         UserSummaryComponent,
         PetListComponent,
-        NewPetComponent,
         NewPetContainerComponent
     ],
     imports: [
