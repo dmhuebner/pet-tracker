@@ -1,16 +1,18 @@
-<section class="new-pet-form">
+<section class="new-pet-container">
     <h3>Add New Pet</h3>
-    <form [formGroup]="newPetForm" (ngSubmit)="addedNewPet()">
+    <form [formGroup]="newPetForm" class="new-pet-form" (ngSubmit)="addedNewPet()">
         <mat-form-field appearance="outline">
             <mat-label>Pet Name</mat-label>
             <input matInput
                    autocomplete="off"
+                   required
                    formControlName="name">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Animal Type</mat-label>
             <input matInput
                    autocomplete="off"
+                   required
                    formControlName="animalType">
         </mat-form-field>
         <mat-form-field appearance="outline">

@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { AccountService } from '../../features/account/services/account.service';
-import { Account } from '../../features/account/interfaces/account.interface';
-import { switchMap, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { PetRef } from '../../features/account/interfaces/pet-ref.interface';
+import { switchMap } from 'rxjs/operators';
+import { EMPTY, Subject } from 'rxjs';
+import { PetService } from '../../features/pet/services/pet.service';
+import { ActivatedRoute } from '@angular/router';
+import { Pet } from '../../features/pet/interfaces/pet.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,29 +14,32 @@ import { PetRef } from '../../features/account/interfaces/pet-ref.interface';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  selectedPet: PetRef;
+  currentPet: Pet;
   unsubscribe$ = new Subject();
 
   constructor(private authService: AuthService,
-              private accountService: AccountService) { }
+              private accountService: AccountService,
+              private petService: PetService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.authService.user$.pipe(
-        switchMap(user => {
-          return this.accountService.getAccount(user);
-        }),
-        takeUntil(this.unsubscribe$)
-    ).subscribe(account => {
-      this.selectedPet = this.getSelectedPet(account);
+    this.accountService.account$.pipe(
+        switchMap((account) => {
+            if (account) {
+                const petName = this.route.snapshot.paramMap.get('pet');
+                const petRef = account.pets.find(pet => pet.name === petName);
+                return this.petService.getPet(petRef.id);
+            } else {
+                return EMPTY;
+            }
+        })
+    ).subscribe(pet => {
+      this.currentPet = pet;
     });
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next(true);
-  }
-
-  private getSelectedPet(account: Account): PetRef {
-    return account.pets.find(pet => pet.name === account.selectedPet);
   }
 
 }

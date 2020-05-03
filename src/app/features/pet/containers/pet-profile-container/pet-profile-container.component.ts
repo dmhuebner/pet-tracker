@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pet } from '../../interfaces/pet.interface';
-import { AccountService } from '../../../account/services/account.service';
 import { Account } from '../../../account/interfaces/account.interface';
 
 @Component({
@@ -14,14 +13,10 @@ export class PetProfileContainerComponent implements OnInit {
 
   editModeOn: boolean;
   account: Account;
-  currentPet: Pet;
 
-  constructor(private accountService: AccountService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.accountService.account$.subscribe(account => {
-      this.account = account;
-    });
   }
 
   toggleEditMode() {

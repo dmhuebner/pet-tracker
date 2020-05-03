@@ -17,8 +17,8 @@ export class PetService {
     this.currentPet$ = this.petState.pet$;
   }
 
-  getPet(petId) {
-    this.petData.getPet(petId).pipe(
+  getPet(petId): Observable<Pet> {
+    return this.petData.getPet(petId).pipe(
         switchMap(pet => {
           this.petState.updatePetState(pet);
           return this.petState.pet$;
