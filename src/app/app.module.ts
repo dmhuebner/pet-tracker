@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AccountModule } from './features/account/account.module';
 import { PetModule } from './features/pet/pet.module';
 import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatCardModule } from '@angular/material/card';
         AngularFirestoreModule.enablePersistence(),
         AccountModule,
         PetModule,
-        MatCardModule
+        MatCardModule,
+        MatNativeDateModule
     ],
   providers: [],
   bootstrap: [AppComponent]

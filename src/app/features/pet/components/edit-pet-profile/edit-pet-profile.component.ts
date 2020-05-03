@@ -14,21 +14,9 @@ export class EditPetProfileComponent implements OnInit {
   @Output() editedPet = new EventEmitter<Pet>();
   @Output() editModeOff = new EventEmitter<true>();
 
-  petProfileForm: FormGroup;
-
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.petProfileForm = this.initializeForm(this.pet);
-  }
-
-  initializeForm(pet: Pet): FormGroup {
-    return this.fb.group({
-      name: [pet.name, [Validators.required]],
-      animalType: [pet.animalType, [Validators.required]],
-      breed: [pet.breed, []],
-      description: [pet.description, []],
-    });
   }
 
   savePetProfile(petProfileForm: FormGroup) {

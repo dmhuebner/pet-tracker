@@ -1,3 +1,6 @@
+import Timestamp = firebase.firestore.Timestamp;
+import * as firebase from 'firebase';
+
 export interface Pet {
     id: string; // TODO id prop should be required
     userId: string;
@@ -5,5 +8,5 @@ export interface Pet {
     animalType: string;
     breed?: string;
     description?: string;
-    birthday?: string;
+    birthday?: Timestamp;
 }

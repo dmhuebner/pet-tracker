@@ -4,7 +4,7 @@ import { EMPTY, Subject } from 'rxjs';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Account } from '../../interfaces/account.interface';
-import { GravatarService } from '../../services/gravatar.service';
+import { GravatarService } from '../../../pet/gravatar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Pet } from '../../../pet/interfaces/pet.interface';
 import { PetService } from '../../../pet/services/pet.service';
