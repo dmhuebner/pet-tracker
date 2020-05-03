@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../features/account/services/account.service';
-import { Account } from '../../../features/account/interfaces/account.interface';
+import { PetService } from '../../../features/pet/services/pet.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +13,8 @@ import { Account } from '../../../features/account/interfaces/account.interface'
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+  currentPetName: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,11 +24,17 @@ export class NavbarComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
               public auth: AuthService,
               private router: Router,
+              private petService: PetService,
               public accountService: AccountService) {
 
   }
 
   ngOnInit(): void {
+    this.petService.currentPet$.subscribe(pet => {
+      if (pet) {
+        this.currentPetName = pet.name;
+      }
+    });
   }
 
   login(): Promise<any> {

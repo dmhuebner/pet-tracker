@@ -18,8 +18,7 @@
             <!--        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
             <app-pet-list
                     [pets]="account.pets"
-                    [selectedPet]="account.selectedPet"
-                    (petSelected)="selectPet($event)">
+                    (petSelected)="goToPetProfile($event)">
             </app-pet-list>
             <mat-card-content></mat-card-content>
             <mat-card-actions>

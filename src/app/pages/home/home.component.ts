@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         switchMap((account) => {
             if (account) {
                 const petName = this.route.snapshot.paramMap.get('pet');
-                const petRef = account.pets.find(pet => pet.name === petName);
+                const petRef = account.pets.find(pet => pet.name.toLowerCase() === petName.toLowerCase());
                 return this.petService.getPet(petRef.id);
             } else {
                 return EMPTY;

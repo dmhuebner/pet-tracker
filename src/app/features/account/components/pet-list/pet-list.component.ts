@@ -8,7 +8,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class PetListComponent implements OnInit {
 
   @Input() pets: any[];
-  @Input() selectedPet: string;
 
   @Output() petSelected = new EventEmitter<string>();
 

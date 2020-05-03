@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { EMPTY, Observable, Subject } from 'rxjs';
+import { EMPTY, Subject } from 'rxjs';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { Account } from '../../interfaces/account.interface';
 import { GravatarService } from '../../services/gravatar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewPetComponent } from '../../components/new-pet/new-pet.component';
 import { Pet } from '../../../pet/interfaces/pet.interface';
 import { PetService } from '../../../pet/services/pet.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-container',
@@ -25,7 +26,8 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
               private auth: AuthService,
               private gravatarService: GravatarService,
               public dialog: MatDialog,
-              private petService: PetService) { }
+              private petService: PetService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.auth.user$.pipe(
@@ -56,10 +58,8 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectPet(petName): void {
-      const updatedAccount = {...this.account};
-      updatedAccount.selectedPet = petName;
-      this.accountService.updateAccount(updatedAccount);
+  goToPetProfile(petName): void {
+      this.router.navigate(['/profile', petName])
   }
 
   private addNewPet(newPet: Pet): Promise<Pet> {

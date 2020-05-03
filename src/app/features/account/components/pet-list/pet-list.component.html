@@ -4,16 +4,11 @@
     <div class="pet"
          *ngFor="let pet of pets"
         (click)="onSelectPet(pet.name)">
-        <h4 class="pet-name"
-            [class.selected]="pet.name === selectedPet">
+        <h4 class="pet-name">
             {{pet.name}}
             <span class="breed">
                  - {{pet.breed || pet.animalType | lowercase}}
             </span>
-            <mat-icon *ngIf="pet.name === selectedPet"
-                      class="selected-pet">
-                check_circle
-            </mat-icon>
         </h4>
 <!--        <mat-divider></mat-divider>-->
     </div>

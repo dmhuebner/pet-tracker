@@ -24,8 +24,7 @@ export class AccountDataService {
       userId: user.uid,
       name: user.displayName,
       email: user.email,
-      pets: [],
-      selectedPet: null
+      pets: []
     };
     return this.accountCollectionRef.doc(user.uid).set(newAccount)
   }

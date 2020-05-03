@@ -5,5 +5,4 @@ export interface Account {
     name: string;
     email: string;
     pets: PetRef[];
-    selectedPet: string;
 }
