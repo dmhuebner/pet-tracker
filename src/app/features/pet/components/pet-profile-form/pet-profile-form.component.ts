@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pet } from '../../interfaces/pet.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pet-profile-form',
@@ -11,7 +10,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class PetProfileFormComponent implements OnInit {
 
   @Input() pet: Pet;
-  @Input() formTitle: string;
 
   @Output() formSubmitted = new EventEmitter<FormGroup>();
   @Output() formCancelled = new EventEmitter<true>();
