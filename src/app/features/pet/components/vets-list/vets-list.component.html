@@ -1,0 +1,9 @@
+<section class="vets-list-container">
+    <h3 class="vets-list-heading">Vet Info</h3>
+    <mat-divider></mat-divider>
+    <ng-container *ngFor="let vet of vets">
+        <mat-list>
+            <app-vet-info [vet]="vet"></app-vet-info>
+        </mat-list>
+    </ng-container>
+</section>
