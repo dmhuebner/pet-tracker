@@ -9,10 +9,18 @@
                 {{pet.name}} | {{pet.breed || pet.animalType}}
                 <hr class="side-header-hr">
             </mat-card-subtitle>
-            <mat-card-subtitle><b>Age:</b> {{pet.birthday | birthdayToAge}}</mat-card-subtitle>
-            <mat-card-subtitle><b>Color:</b> {{pet.color}}</mat-card-subtitle>
-            <mat-card-subtitle><b>Birthday:</b> {{pet.birthday.toDate() | date : 'longDate'}}</mat-card-subtitle>
-            <mat-card-subtitle><b>Sex:</b> {{pet.sex}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="pet.birthday">
+                <b>Age:</b> {{pet.birthday | birthdayToAge}}
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="pet.color">
+                <b>Color:</b> {{pet.color}}
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="pet.birthday">
+                <b>Birthday:</b> {{pet.birthday.toDate() | date : 'longDate'}}
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="pet.sex">
+                <b>Sex:</b> {{pet.sex}}
+            </mat-card-subtitle>
             <div class="edit-btn">
                 <button mat-raised-button
                         (click)="onEditModeClicked()">
