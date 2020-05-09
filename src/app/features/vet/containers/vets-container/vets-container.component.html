@@ -3,6 +3,7 @@
         (vetEdited)="updateVet($event)">
 </app-vets-list>
 <button mat-raised-button
+        *ngIf="!petId"
         class="add-vet-btn"
         color="primary"
         aria-label="New vet"

@@ -33,7 +33,7 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
           map((allVets) => {
             this.allVets = allVets;
             if (this.petId) {
-              return allVets.filter(vet => vet.petIds.includes(this.petId));
+              return allVets.filter(vet => vet.petIds?.includes(this.petId));
             } else {
               return allVets;
             }
