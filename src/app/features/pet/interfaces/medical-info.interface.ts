@@ -1,4 +1,4 @@
-import { Vet } from './vet.interface';
+import { Vet } from '../../account/interfaces/vet.interface';
 
 export interface MedicalInfo {
     vets: Vet[];

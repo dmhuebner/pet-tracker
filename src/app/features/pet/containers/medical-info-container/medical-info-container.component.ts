@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MedicalInfo } from '../../interfaces/medical-info.interface';
 
 @Component({
   selector: 'app-medical-info-container',
@@ -8,7 +7,8 @@ import { MedicalInfo } from '../../interfaces/medical-info.interface';
 })
 export class MedicalInfoContainerComponent implements OnInit {
 
-  @Input() medicalInfo: MedicalInfo;
+  @Input() userId: string;
+  @Input() petId: string;
 
   constructor() { }
 

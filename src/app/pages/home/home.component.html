@@ -3,6 +3,7 @@
           [pet]="currentPet">
   </app-pet-profile-container>
   <app-medical-info-container
-          [medicalInfo]="currentPet?.medical">
+          [userId]="account?.userId"
+          [petId]="currentPet?.id">
   </app-medical-info-container>
 </div>

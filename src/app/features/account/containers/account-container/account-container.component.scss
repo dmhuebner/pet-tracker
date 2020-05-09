@@ -1,15 +1,19 @@
-.account-section {
+.account-container {
   padding: 2rem;
-  display: flex;
-  justify-content: space-between;
+  margin: 1rem;
 
-  .account-pets {
+  .account-section {
     display: flex;
-    flex-direction: column;
-    padding: 2rem;
+    justify-content: space-between;
 
-    .add-pet-btn {
-      margin-left: 1.5rem;
+    .account-pets {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+
+      .add-pet-btn {
+        margin-left: 1.5rem;
+      }
     }
   }
 }

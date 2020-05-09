@@ -7,4 +7,5 @@ export interface Vet {
     website?: string;
     primary?: boolean;
     drName?: string;
+    petIds: string[];
 }

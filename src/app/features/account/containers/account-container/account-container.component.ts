@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Pet } from '../../../pet/interfaces/pet.interface';
 import { PetService } from '../../../pet/services/pet.service';
 import { Router } from '@angular/router';
-import { NewPetContainerComponent } from '../new-pet-container/new-pet-container.component';
+import { NewPetContainerComponent } from '../../../pet/containers/new-pet-container/new-pet-container.component';
 
 @Component({
   selector: 'app-account-container',

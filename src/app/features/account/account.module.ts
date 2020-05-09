@@ -11,9 +11,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { NewPetContainerComponent } from './containers/new-pet-container/new-pet-container.component';
-import { PetModule } from '../pet/pet.module';
-
+import { VetsContainerComponent } from './containers/vets-container/vets-container.component';
+import { VetInfoComponent } from './components/vet-info/vet-info.component';
+import { VetsListComponent } from './components/vets-list/vets-list.component';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -21,7 +22,12 @@ import { PetModule } from '../pet/pet.module';
         AccountContainerComponent,
         UserSummaryComponent,
         PetListComponent,
-        NewPetContainerComponent
+        VetsContainerComponent,
+        VetInfoComponent,
+        VetsListComponent
+    ],
+    exports: [
+        VetsContainerComponent
     ],
     imports: [
         CommonModule,
@@ -33,7 +39,7 @@ import { PetModule } from '../pet/pet.module';
         MatFormFieldModule,
         MatInputModule,
         MatCardModule,
-        PetModule
+        MatListModule
     ]
 })
 export class AccountModule { }

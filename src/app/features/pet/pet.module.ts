@@ -13,10 +13,10 @@ import { BirthdayToAgePipe } from './pipes/birthday-to-age.pipe';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MedicalInfoContainerComponent } from './containers/medical-info-container/medical-info-container.component';
-import { VetInfoComponent } from './components/vet-info/vet-info.component';
-import { VetsListComponent } from './components/vets-list/vets-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { AccountModule } from '../account/account.module';
+import { NewPetContainerComponent } from './containers/new-pet-container/new-pet-container.component';
 
 
 
@@ -24,17 +24,16 @@ import { MatListModule } from '@angular/material/list';
     declarations: [
         PetProfileContainerComponent,
         PetProfileComponent,
+        NewPetContainerComponent,
         EditPetProfileComponent,
         PetProfileFormComponent,
         BirthdayToAgePipe,
         MedicalInfoContainerComponent,
-        VetInfoComponent,
-        VetsListComponent
     ],
     exports: [
         PetProfileContainerComponent,
         PetProfileFormComponent,
-        MedicalInfoContainerComponent
+        MedicalInfoContainerComponent,
     ],
     imports: [
         CommonModule,
@@ -47,6 +46,7 @@ import { MatListModule } from '@angular/material/list';
         MatDividerModule,
         MatIconModule,
         MatListModule,
+        AccountModule,
     ]
 })
 export class PetModule { }
