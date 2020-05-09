@@ -33,4 +33,8 @@ export class VetsService {
       console.log('updatedVetList', updatedVetList);
       return this.vetsData.updateVetList(userId, updatedVetList);
   }
+
+    updateVetList(userId: string, vetList: Vet[]): Observable<Vet[]> {
+        return this.vetsData.updateVetList(userId, vetList);
+    }
 }

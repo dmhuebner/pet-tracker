@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Vet } from '../../interfaces/vet.interface';
 import { VetsService } from '../../services/vets.service';
 import { map, takeUntil } from 'rxjs/operators';
@@ -13,6 +13,8 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() userId: string;
   @Input() petId: string;
+
+  @Output() newVetClicked = new EventEmitter<Vet[]>();
 
   vets: Vet[];
   unsubscribe$ = new Subject<true>();
@@ -29,8 +31,8 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
       this.unsubscribe$.next(true);
       this.vetsService.getVets(this.userId).pipe(
           map((allVets) => {
+            this.allVets = allVets;
             if (this.petId) {
-              this.allVets = allVets;
               return allVets.filter(vet => vet.petIds.includes(this.petId));
             } else {
               return allVets;
@@ -48,8 +50,11 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   updateVet(editedVet: Vet) {
-    console.log('editedVet', editedVet);
     this.vetsService.updateVet(this.userId, editedVet, this.allVets);
+  }
+
+  onNewVetClicked() {
+    this.newVetClicked.emit(this.allVets);
   }
 
 }

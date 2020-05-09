@@ -2,3 +2,10 @@
         [vets]="vets"
         (vetEdited)="updateVet($event)">
 </app-vets-list>
+<button mat-raised-button
+        class="add-vet-btn"
+        color="primary"
+        aria-label="New vet"
+        (click)="onNewVetClicked()">
+    New Vet
+</button>

@@ -33,7 +33,9 @@
         </app-user-summary>
     </section>
     <section class="vet-list">
-        <app-vets-container [userId]="account.userId">
+        <app-vets-container
+                [userId]="account.userId"
+                (newVetClicked)="openAddVetDialog($event)">
         </app-vets-container>
     </section>
 </main>

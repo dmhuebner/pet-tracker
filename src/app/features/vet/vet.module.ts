@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NewVetComponent } from './components/new-vet/new-vet.component';
 
 
 
@@ -22,7 +23,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     VetInfoComponent,
     VetsListComponent,
     VetFormComponent,
-    VetListItemComponent
+    VetListItemComponent,
+    NewVetComponent
   ],
   exports: [
     VetsContainerComponent
