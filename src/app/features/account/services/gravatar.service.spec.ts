@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GravatarService } from '../../pet/gravatar.service';
+import { GravatarService } from './gravatar.service';
 
 describe('GravatarService', () => {
   let service: GravatarService;

@@ -11,24 +11,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { VetsContainerComponent } from './containers/vets-container/vets-container.component';
-import { VetInfoComponent } from './components/vet-info/vet-info.component';
-import { VetsListComponent } from './components/vets-list/vets-list.component';
 import { MatListModule } from '@angular/material/list';
+import { VetModule } from '../vet/vet.module';
 
 
 @NgModule({
     declarations: [
         AccountContainerComponent,
         UserSummaryComponent,
-        PetListComponent,
-        VetsContainerComponent,
-        VetInfoComponent,
-        VetsListComponent
+        PetListComponent
     ],
-    exports: [
-        VetsContainerComponent
-    ],
+    exports: [],
     imports: [
         CommonModule,
         MatDividerModule,
@@ -39,7 +32,8 @@ import { MatListModule } from '@angular/material/list';
         MatFormFieldModule,
         MatInputModule,
         MatCardModule,
-        MatListModule
+        MatListModule,
+        VetModule
     ]
 })
 export class AccountModule { }

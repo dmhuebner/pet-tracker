@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AccountModule } from '../account/account.module';
 import { NewPetContainerComponent } from './containers/new-pet-container/new-pet-container.component';
+import { VetModule } from '../vet/vet.module';
 
 
 
@@ -47,6 +48,7 @@ import { NewPetContainerComponent } from './containers/new-pet-container/new-pet
         MatIconModule,
         MatListModule,
         AccountModule,
+        VetModule
     ]
 })
 export class PetModule { }
