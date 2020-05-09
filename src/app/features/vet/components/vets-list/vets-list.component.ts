@@ -17,7 +17,8 @@ export class VetsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onVetEdited(editedVet: Vet) {
+  onVetEdited(editedVet: Vet, index: number) {
+    editedVet.index = index;
     this.vetEdited.emit(editedVet);
   }
 

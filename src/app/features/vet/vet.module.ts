@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NewVetComponent } from './components/new-vet/new-vet.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -38,7 +39,8 @@ import { NewVetComponent } from './components/new-vet/new-vet.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule
   ]
 })
 export class VetModule { }

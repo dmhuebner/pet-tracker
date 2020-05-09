@@ -3,8 +3,8 @@ import * as firebase from 'firebase';
 
 export interface Vet {
     name: string;
-    id: string;
     petIds: string[];
+    index?: number;
     phone?: string;
     emergencyPhone?: string;
     address?: string;

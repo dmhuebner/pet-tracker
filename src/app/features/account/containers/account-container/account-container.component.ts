@@ -71,7 +71,9 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
         dialogRef.afterClosed().pipe(
             takeUntil(this.unsubscribe$)
         ).subscribe(newVetList => {
-            this.updateVetList(newVetList);
+            if (newVetList) {
+                this.updateVetList(newVetList);
+            }
         });
     }
 

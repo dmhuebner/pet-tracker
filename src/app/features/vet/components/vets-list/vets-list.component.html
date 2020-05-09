@@ -1,11 +1,11 @@
 <section class="vets-list-container">
     <h3 class="vets-list-heading">Vet Info</h3>
     <mat-divider></mat-divider>
-    <ng-container *ngFor="let vet of vets">
+    <ng-container *ngFor="let vet of vets; index as i">
         <mat-list>
             <app-vet-list-item
                     [vet]="vet"
-                    (vetEdited)="onVetEdited($event)">
+                    (vetEdited)="onVetEdited($event, i)">
             </app-vet-list-item>
         </mat-list>
     </ng-container>

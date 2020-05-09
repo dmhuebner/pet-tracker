@@ -27,11 +27,14 @@ export class VetsService {
   }
 
   updateVet(userId: string, vetToUpdate: Vet, vetList: Vet[]): Observable<Vet[]> {
-      const indexToUpdate = vetList.findIndex(vet => vet.id === vetToUpdate.id);
       const updatedVetList = vetList.slice();
-      updatedVetList[indexToUpdate] = vetToUpdate;
-      console.log('updatedVetList', updatedVetList);
-      return this.vetsData.updateVetList(userId, updatedVetList);
+      const indexToUpdate = vetToUpdate.index;
+      if (indexToUpdate > -1) {
+          delete vetToUpdate.index;
+          updatedVetList[indexToUpdate] = vetToUpdate;
+          console.log('updatedVetList', updatedVetList);
+          return this.vetsData.updateVetList(userId, updatedVetList);
+      }
   }
 
     updateVetList(userId: string, vetList: Vet[]): Observable<Vet[]> {

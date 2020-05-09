@@ -16,6 +16,7 @@ export class VetFormComponent implements OnInit, OnChanges {
   @Output() cancelled = new EventEmitter<true>();
 
   vetForm: FormGroup;
+  availableVetTypes = ['Clinic', 'Emergency', 'Clinic/Emergency'];
 
   constructor(private fb: FormBuilder) { }
 
@@ -38,7 +39,7 @@ export class VetFormComponent implements OnInit, OnChanges {
   private initVetForm(vet: Vet): FormGroup {
     return this.fb.group({
       name: [vet ? vet.name : '', [Validators.required]],
-      phone: [vet ? vet.phone : '', [Validators.required]],
+      phone: [vet ? vet.phone : '', []],
       emergencyPhone: [vet ? vet.emergencyPhone : '', []],
       address: [vet ? vet.address : '', []],
       primary: [vet ? vet.primary : false, []],
