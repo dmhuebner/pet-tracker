@@ -17,6 +17,8 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
   vets: Vet[];
   unsubscribe$ = new Subject<true>();
 
+  private allVets: Vet[];
+
   constructor(private vetsService: VetsService) { }
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
       this.vetsService.getVets(this.userId).pipe(
           map((allVets) => {
             if (this.petId) {
+              this.allVets = allVets;
               return allVets.filter(vet => vet.petIds.includes(this.petId));
             } else {
               return allVets;
@@ -42,6 +45,11 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy(): void {
     this.unsubscribe$.next(true);
+  }
+
+  updateVet(editedVet: Vet) {
+    console.log('editedVet', editedVet);
+    this.vetsService.updateVet(this.userId, editedVet, this.allVets);
   }
 
 }

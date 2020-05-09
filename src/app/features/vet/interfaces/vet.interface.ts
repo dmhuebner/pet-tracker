@@ -1,5 +1,10 @@
+import Timestamp = firebase.firestore.Timestamp;
+import * as firebase from 'firebase';
+
 export interface Vet {
     name: string;
+    id: string;
+    petIds: string[];
     phone?: string;
     emergencyPhone?: string;
     address?: string;
@@ -7,5 +12,5 @@ export interface Vet {
     website?: string;
     primary?: boolean;
     drName?: string;
-    petIds: string[];
+    firstVisit?: Timestamp;
 }

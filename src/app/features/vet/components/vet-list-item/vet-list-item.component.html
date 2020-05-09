@@ -1,0 +1,14 @@
+<section class="vet-info-container">
+    <app-vet-info
+            *ngIf="!editModeOn else editModeUi"
+            [vet]="vet"
+            (editModeOn)="toggleEditMode()">
+    </app-vet-info>
+    <ng-template #editModeUi>
+        <app-vet-form
+                [vet]="vet"
+                (submitted)="onVetEdited($event)"
+                (cancelled)="toggleEditMode()">
+        </app-vet-form>
+    </ng-template>
+</section>

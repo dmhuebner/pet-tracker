@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Vet } from '../../interfaces/vet.interface';
 
 @Component({
@@ -10,9 +10,15 @@ export class VetInfoComponent implements OnInit {
 
   @Input() vet: Vet;
 
+  @Output() editModeOn = new EventEmitter<true>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onEditModeClicked() {
+    this.editModeOn.emit(true);
   }
 
 }

@@ -7,6 +7,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { VetFormComponent } from './components/vet-form/vet-form.component';
+import { VetListItemComponent } from './components/vet-list-item/vet-list-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -14,7 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     VetsContainerComponent,
     VetInfoComponent,
-    VetsListComponent
+    VetsListComponent,
+    VetFormComponent,
+    VetListItemComponent
   ],
   exports: [
     VetsContainerComponent
@@ -24,7 +32,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule
   ]
 })
 export class VetModule { }

@@ -22,4 +22,8 @@ export class VetsDataService {
         catchError(err => err)
     );
   }
+
+  updateVetList(userId: string, vetList: Vet[]): Observable<Vet[]> {
+    return this.vetsCollectionRef.doc(userId).update({vets: vetList});
+  }
 }

@@ -25,4 +25,12 @@ export class VetsService {
         })
     );
   }
+
+  updateVet(userId: string, vetToUpdate: Vet, vetList: Vet[]): Observable<Vet[]> {
+      const indexToUpdate = vetList.findIndex(vet => vet.id === vetToUpdate.id);
+      const updatedVetList = vetList.slice();
+      updatedVetList[indexToUpdate] = vetToUpdate;
+      console.log('updatedVetList', updatedVetList);
+      return this.vetsData.updateVetList(userId, updatedVetList);
+  }
 }

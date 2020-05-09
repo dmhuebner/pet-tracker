@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Vet } from '../../interfaces/vet.interface';
 
 @Component({
@@ -10,9 +10,15 @@ export class VetsListComponent implements OnInit {
 
   @Input() vets: Vet[];
 
+  @Output() vetEdited = new EventEmitter<Vet>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onVetEdited(editedVet: Vet) {
+    this.vetEdited.emit(editedVet);
   }
 
 }

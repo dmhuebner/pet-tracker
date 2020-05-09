@@ -1,0 +1,104 @@
+<div class="vet-form-container">
+    <form [formGroup]="vetForm" class="vet-form" (ngSubmit)="onSubmit()">
+<!--        <mat-form-field appearance="outline" class="full-width-field">-->
+<!--            <mat-label>Clinic Name</mat-label>-->
+<!--            <input matInput-->
+<!--                   autocomplete="off"-->
+<!--                   required-->
+<!--                   formControlName="name">-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field appearance="outline" class="full-width-field">-->
+<!--            <mat-label>Vet Address</mat-label>-->
+<!--            <input matInput-->
+<!--                   autocomplete="off"-->
+<!--                   required-->
+<!--                   formControlName="address">-->
+<!--        </mat-form-field>-->
+
+
+        <div class="short-field-row">
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Clinic Name</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       required
+                       formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Dr. Name</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="drName">
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Vet Address</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   required
+                   formControlName="address">
+        </mat-form-field>
+        <div class="short-field-row">
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Phone</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="phone">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Emergency Phone</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="emergencyPhone">
+            </mat-form-field>
+        </div>
+        <div class="short-field-row">
+            <div class="short-width-field">
+                <div>
+                    <mat-label>
+                        Primary Vet
+                        <mat-checkbox
+                                formControlName="primary">
+                        </mat-checkbox>
+                    </mat-label>
+                </div>
+            </div>
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Vet Type</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="emergencyPhone">
+            </mat-form-field>
+        </div>
+<!--        <mat-form-field appearance="outline" class="full-width-field">-->
+<!--            <mat-label>Birthday</mat-label>-->
+<!--            <input matInput-->
+<!--                   [matDatepicker]="birthdayPicker"-->
+<!--                   autocomplete="off"-->
+<!--                   formControlName="birthday">-->
+<!--            <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>-->
+<!--            <mat-datepicker #birthdayPicker></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field appearance="outline" class="full-width-field">-->
+<!--            <mat-label>Description</mat-label>-->
+<!--            <textarea matInput-->
+<!--                      autocomplete="off"-->
+<!--                      formControlName="description">-->
+<!--            </textarea>-->
+<!--        </mat-form-field>-->
+        <div class="btn-group">
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="vetForm.invalid"
+                    type="submit">
+                Save
+            </button>
+            <button mat-raised-button
+                    color="secondary"
+                    (click)="onCancel()"
+                    type="button">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>
