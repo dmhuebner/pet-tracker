@@ -35,6 +35,8 @@
     <section class="vet-list">
         <app-vets-container
                 [userId]="account.userId"
+                [petList]="account.pets"
+                [showPetList]="true"
                 (newVetClicked)="openAddVetDialog($event)">
         </app-vets-container>
     </section>

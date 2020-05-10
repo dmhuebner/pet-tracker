@@ -2,11 +2,29 @@
   display: flex;
   justify-content: space-between;
 
+  .text-muted {
+    color: #888;
+  }
+
   .inner-wrapper {
     display: flex;
     flex-direction: row;
+    margin-bottom: 1rem;
 
     .info-panel {
+
+      .pet-list {
+        display: flex;
+
+        .pet-list-label {
+          margin: 0.5rem;
+        }
+
+        .pet-chip {
+          cursor: pointer;
+        }
+      }
+
       .info-element {
         display: flex;
 

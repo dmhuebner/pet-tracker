@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Vet } from '../../interfaces/vet.interface';
+import { PetRef } from '../../../account/interfaces/pet-ref.interface';
 
 @Component({
   selector: 'app-vets-list',
@@ -9,8 +10,11 @@ import { Vet } from '../../interfaces/vet.interface';
 export class VetsListComponent implements OnInit {
 
   @Input() vets: Vet[];
+  @Input() petList: PetRef[];
+  @Input() showPetList: boolean;
 
   @Output() vetEdited = new EventEmitter<Vet>();
+  @Output() petClicked = new EventEmitter<string>();
 
   constructor() { }
 
@@ -20,6 +24,10 @@ export class VetsListComponent implements OnInit {
   onVetEdited(editedVet: Vet, index: number) {
     editedVet.index = index;
     this.vetEdited.emit(editedVet);
+  }
+
+  onPetClicked(petName: string) {
+    this.petClicked.emit(petName);
   }
 
 }

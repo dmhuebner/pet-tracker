@@ -1,10 +1,18 @@
 <section class="vets-list-container">
-    <h3 class="vets-list-heading">Vet Info</h3>
+    <header class="vet-list-header">
+        <h3 class="vets-list-heading">Vet Info</h3>
+        <div>
+            <ng-content></ng-content>
+        </div>
+    </header>
     <mat-divider></mat-divider>
     <ng-container *ngFor="let vet of vets; index as i">
         <mat-list>
             <app-vet-list-item
                     [vet]="vet"
+                    [petList]="petList"
+                    [showPetList]="showPetList"
+                    (petClicked)="onPetClicked($event)"
                     (vetEdited)="onVetEdited($event, i)">
             </app-vet-list-item>
         </mat-list>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PetRef } from '../../../account/interfaces/pet-ref.interface';
 
 @Component({
   selector: 'app-medical-info-container',
@@ -9,6 +10,7 @@ export class MedicalInfoContainerComponent implements OnInit {
 
   @Input() userId: string;
   @Input() petId: string;
+  @Input() petList: PetRef[];
 
   constructor() { }
 

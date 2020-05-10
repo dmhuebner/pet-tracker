@@ -65,7 +65,10 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
     openAddVetDialog(allVets: Vet[]): void {
         const dialogRef = this.dialog.open(NewVetComponent, {
             minWidth: '400px',
-            data: { allVets }
+            data: {
+                allVets,
+                petList: this.account.pets
+            }
         });
 
         dialogRef.afterClosed().pipe(

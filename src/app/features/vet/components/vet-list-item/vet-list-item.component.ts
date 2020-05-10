@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Vet } from '../../interfaces/vet.interface';
 import { FormGroup } from '@angular/forms';
+import { PetRef } from '../../../account/interfaces/pet-ref.interface';
 
 @Component({
   selector: 'app-vet-list-item',
@@ -10,8 +11,11 @@ import { FormGroup } from '@angular/forms';
 export class VetListItemComponent implements OnInit {
 
   @Input() vet: Vet;
+  @Input() petList: PetRef[];
+  @Input() showPetList: boolean;
 
   @Output() vetEdited = new EventEmitter<Vet>();
+  @Output() petClicked = new EventEmitter<string>();
 
   editModeOn = false;
 
@@ -31,6 +35,10 @@ export class VetListItemComponent implements OnInit {
       this.vetEdited.emit(editedPet);
       this.editModeOn = false;
     }
+  }
+
+  onPetClicked(petName: string) {
+    this.petClicked.emit(petName);
   }
 
 }

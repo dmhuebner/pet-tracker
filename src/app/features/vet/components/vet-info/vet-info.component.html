@@ -20,6 +20,19 @@
                     {{vet.address}}
                 </a>
             </p>
+            <div class="pet-list" *ngIf="showPetList">
+                <h4 class="pet-list-label text-muted">Pets:</h4>
+                <mat-chip-list>
+                    <mat-chip
+                            *ngFor="let petId of vet.petIds"
+                            selected="true"
+                            color="secondary"
+                            class="pet-chip"
+                            (click)="onClickPet(petId)">
+                        {{getPetName(petId)}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
         </div>
         <div class="info-panel right-panel">
             <div>

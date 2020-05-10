@@ -34,7 +34,9 @@
             <mat-form-field appearance="outline" class="short-width-field">
                 <mat-label>Vet Type</mat-label>
                 <mat-select formControlName="vetType">
-                    <mat-option *ngFor="let vetType of availableVetTypes" [value]="vetType">
+                    <mat-option
+                            *ngFor="let vetType of availableVetTypes"
+                            [value]="vetType">
                         {{vetType}}
                     </mat-option>
                 </mat-select>
@@ -61,6 +63,29 @@
                        formControlName="emergencyPhone">
             </mat-form-field>
         </div>
+        <div class="short-field-row">
+<!--            <div class="short-width-field">-->
+<!--                <div class="checkbox-container">-->
+<!--                    <mat-checkbox-->
+<!--                            formControlName="primary">-->
+<!--                        Primary Vet-->
+<!--                    </mat-checkbox>-->
+<!--                </div>-->
+<!--            </div>-->
+            <mat-form-field
+                    appearance="outline"
+                    class="short-width-field">
+                <mat-label>Pets</mat-label>
+                <mat-select formControlName="petIds" multiple>
+                    <mat-option
+                            *ngFor="let petRef of petList"
+                            [value]="petRef.id">
+                        {{petRef.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
         <div class="btn-group">
             <button mat-raised-button
                     color="primary"

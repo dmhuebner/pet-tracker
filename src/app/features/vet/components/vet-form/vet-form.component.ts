@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Vet } from '../../interfaces/vet.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PetRef } from '../../../account/interfaces/pet-ref.interface';
 
 @Component({
   selector: 'app-vet-form',
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class VetFormComponent implements OnInit, OnChanges {
 
   @Input() vet: Vet;
+  @Input() petList: PetRef[];
 
   @Output() submitted = new EventEmitter<FormGroup>();
   @Output() cancelled = new EventEmitter<true>();
@@ -46,6 +48,7 @@ export class VetFormComponent implements OnInit, OnChanges {
       vetType: [vet ? vet.vetType : '', []],
       website: [vet ? vet.website : '', []],
       drName: [vet ? vet.drName : '', []],
+      petIds: [vet ? vet.petIds : [], []],
       firstVisit: [vet ? vet.firstVisit : '', []]
     });
   }

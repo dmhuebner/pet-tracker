@@ -3,6 +3,8 @@ import { Vet } from '../../interfaces/vet.interface';
 import { VetsService } from '../../services/vets.service';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { PetRef } from '../../../account/interfaces/pet-ref.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vets-container',
@@ -13,6 +15,8 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() userId: string;
   @Input() petId: string;
+  @Input() petList: PetRef[];
+  @Input() showPetList: boolean;
 
   @Output() newVetClicked = new EventEmitter<Vet[]>();
 
@@ -21,7 +25,8 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   private allVets: Vet[];
 
-  constructor(private vetsService: VetsService) { }
+  constructor(private vetsService: VetsService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -55,6 +60,10 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   onNewVetClicked() {
     this.newVetClicked.emit(this.allVets);
+  }
+
+  onPetClicked(petName: string) {
+    this.router.navigate(['profile', petName]);
   }
 
 }

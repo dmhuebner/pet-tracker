@@ -1,12 +1,15 @@
 <app-vets-list
         [vets]="vets"
-        (vetEdited)="updateVet($event)">
+        [petList]="petList"
+        [showPetList]="showPetList"
+        (vetEdited)="updateVet($event)"
+        (petClicked)="onPetClicked($event)">
+    <button mat-raised-button
+            *ngIf="!petId"
+            class="add-vet-btn"
+            color="primary"
+            aria-label="New vet"
+            (click)="onNewVetClicked()">
+        <mat-icon>add</mat-icon> New Vet
+    </button>
 </app-vets-list>
-<button mat-raised-button
-        *ngIf="!petId"
-        class="add-vet-btn"
-        color="primary"
-        aria-label="New vet"
-        (click)="onNewVetClicked()">
-    New Vet
-</button>
