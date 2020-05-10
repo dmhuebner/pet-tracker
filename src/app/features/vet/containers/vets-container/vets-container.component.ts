@@ -36,6 +36,7 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
       this.unsubscribe$.next(true);
       this.vetsService.getVets(this.userId).pipe(
           map((allVets) => {
+            console.log('allVets', allVets);
             this.allVets = allVets;
             if (this.petId) {
               return allVets.filter(vet => vet.petIds?.includes(this.petId));

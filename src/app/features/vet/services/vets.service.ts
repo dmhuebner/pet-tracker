@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { VetsDataService } from './vets-data.service';
 import { VetsStateService } from './vets-state.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Vet } from '../interfaces/vet.interface';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
+import { VetsList } from '../interfaces/vets-list.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,20 @@ export class VetsService {
   }
 
   getVets(userId: string): Observable<Vet[]> {
+      console.log('Getting Vets', userId);
     return this.vetsData.getVetsData(userId).pipe(
         switchMap(vets => {
-          this.vetsState.updateVets(vets);
-          return this.vetsState.vets$;
+            if (vets) {
+                console.log('vets', vets);
+                this.vetsState.updateVets(vets);
+                return this.vetsState.vets$;
+            } else {
+                return this.createVetList(userId);
+            }
+        }),
+        catchError(err => {
+            console.log('Error getting vets', err);
+            return of([]);
         })
     );
   }
@@ -37,7 +48,11 @@ export class VetsService {
       }
   }
 
-    updateVetList(userId: string, vetList: Vet[]): Observable<Vet[]> {
-        return this.vetsData.updateVetList(userId, vetList);
-    }
+  updateVetList(userId: string, vetList: Vet[]): Observable<Vet[]> {
+      return this.vetsData.updateVetList(userId, vetList);
+  }
+
+  private createVetList(userId: string): Observable<Vet[]> {
+      return this.vetsData.createVetList(userId);
+  }
 }

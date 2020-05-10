@@ -23,6 +23,7 @@ export class AccountService {
         return accountData$.pipe(
             switchMap((accountData) => {
                 if (accountData) {
+                    console.log('accountData', accountData);
                     this.stateService.updateAccount(accountData);
                     return this.stateService.account$;
                 } else {

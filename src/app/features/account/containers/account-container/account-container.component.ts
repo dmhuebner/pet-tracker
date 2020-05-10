@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { EMPTY, Observable, Subject } from 'rxjs';
+import { EMPTY, Observable, Subject, throwError } from 'rxjs';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { catchError, switchMap, takeUntil } from 'rxjs/operators';
 import { Account } from '../../interfaces/account.interface';
 import { GravatarService } from '../../services/gravatar.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,6 +38,10 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
         switchMap(user => {
           this.userImageUrl = this.gravatarService.getGravatar(user.email);
           return user ? this.accountService.getAccount(user) : EMPTY;
+        }),
+        catchError(err => {
+            console.log('err', err);
+            return throwError(err);
         }),
         takeUntil(this.unsubscribe$)
     ).subscribe(account => {
