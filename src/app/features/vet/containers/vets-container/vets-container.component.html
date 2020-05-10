@@ -3,6 +3,7 @@
         [petList]="petList"
         [showPetList]="showPetList"
         (vetEdited)="updateVet($event)"
+        (vetDeleted)="openDeleteConfirm($event)"
         (petClicked)="onPetClicked($event)">
     <button mat-raised-button
             *ngIf="!petId"

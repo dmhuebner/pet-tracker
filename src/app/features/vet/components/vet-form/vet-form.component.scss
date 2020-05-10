@@ -32,9 +32,16 @@
     }
 
     .btn-group {
+      display: flex;
 
-      button {
-        margin: 1rem;
+      .left-btns {
+        button {
+          margin: 1rem;
+        }
+      }
+
+      .right-btns {
+        margin-left: auto;
       }
     }
   }

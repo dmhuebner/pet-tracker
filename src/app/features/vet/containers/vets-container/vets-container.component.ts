@@ -5,6 +5,9 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PetRef } from '../../../account/interfaces/pet-ref.interface';
 import { Router } from '@angular/router';
+import { NewVetComponent } from '../../components/new-vet/new-vet.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-vets-container',
@@ -26,7 +29,8 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
   private allVets: Vet[];
 
   constructor(private vetsService: VetsService,
-              private router: Router) { }
+              private router: Router,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +40,6 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
       this.unsubscribe$.next(true);
       this.vetsService.getVets(this.userId).pipe(
           map((allVets) => {
-            console.log('allVets', allVets);
             this.allVets = allVets;
             if (this.petId) {
               return allVets.filter(vet => vet.petIds?.includes(this.petId));
@@ -57,6 +60,30 @@ export class VetsContainerComponent implements OnInit, OnDestroy, OnChanges {
 
   updateVet(editedVet: Vet) {
     this.vetsService.updateVet(this.userId, editedVet, this.allVets);
+  }
+
+  openDeleteConfirm(vetToDelete) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      minWidth: '400px',
+      minHeight: '150px',
+      data: {
+        confirmHeading: `Delete "${vetToDelete.name}"?`
+      }
+    });
+
+    dialogRef.afterClosed().pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(deleteConfirmed => {
+      if (deleteConfirmed) {
+        this.deleteVet(vetToDelete);
+      }
+    });
+  }
+
+  private deleteVet(vetToDelete: Vet) {
+    const updatedVetList = this.vets.slice();
+    updatedVetList.splice(vetToDelete.index, 1);
+    this.vetsService.updateVetList(this.userId, updatedVetList);
   }
 
   onNewVetClicked() {

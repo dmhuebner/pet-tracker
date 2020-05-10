@@ -13,6 +13,13 @@
                 [petList]="petList"
                 (submitted)="onVetEdited($event)"
                 (cancelled)="toggleEditMode()">
+            <button mat-flat-button
+                    color="warn"
+                    class="delete-btn"
+                    type="button"
+                    (click)="deleteVet(vet)">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
         </app-vet-form>
     </ng-template>
 </section>

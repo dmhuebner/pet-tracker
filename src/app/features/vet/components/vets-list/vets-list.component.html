@@ -13,7 +13,8 @@
                     [petList]="petList"
                     [showPetList]="showPetList"
                     (petClicked)="onPetClicked($event)"
-                    (vetEdited)="onVetEdited($event, i)">
+                    (vetEdited)="onVetEdited($event, i)"
+                    (vetDeleted)="onVetDeleted($event, i)">
             </app-vet-list-item>
         </mat-list>
     </ng-container>

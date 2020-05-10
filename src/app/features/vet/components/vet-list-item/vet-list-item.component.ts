@@ -15,6 +15,7 @@ export class VetListItemComponent implements OnInit {
   @Input() showPetList: boolean;
 
   @Output() vetEdited = new EventEmitter<Vet>();
+  @Output() vetDeleted = new EventEmitter<Vet>();
   @Output() petClicked = new EventEmitter<string>();
 
   editModeOn = false;
@@ -39,6 +40,10 @@ export class VetListItemComponent implements OnInit {
 
   onPetClicked(petName: string) {
     this.petClicked.emit(petName);
+  }
+
+  deleteVet(vet) {
+    this.vetDeleted.emit(vet);
   }
 
 }

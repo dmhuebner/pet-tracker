@@ -14,6 +14,7 @@ export class VetsListComponent implements OnInit {
   @Input() showPetList: boolean;
 
   @Output() vetEdited = new EventEmitter<Vet>();
+  @Output() vetDeleted = new EventEmitter<Vet>();
   @Output() petClicked = new EventEmitter<string>();
 
   constructor() { }
@@ -28,6 +29,12 @@ export class VetsListComponent implements OnInit {
 
   onPetClicked(petName: string) {
     this.petClicked.emit(petName);
+  }
+
+  onVetDeleted(vetToDelete: Vet, index: number) {
+    vetToDelete.index = index;
+    console.log('vetToDelete', vetToDelete);
+    this.vetDeleted.emit(vetToDelete);
   }
 
 }
