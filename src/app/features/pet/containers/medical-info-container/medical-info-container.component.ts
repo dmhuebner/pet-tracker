@@ -34,7 +34,7 @@ export class MedicalInfoContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.vetsService.vets$.subscribe(vets => {
-      this.vets = vets;
+      this.vets = this.pet?.id ? vets.filter(vet => vet.petIds.includes(this.pet.id)) : vets;
     });
   }
 
@@ -46,7 +46,7 @@ export class MedicalInfoContainerComponent implements OnInit {
     const dialogRef = this.dialog.open(NewShotContainerComponent, {
       minWidth: '400px',
       data: {
-        vetList: this.vets?.filter(vet => vet.petIds.includes(this.pet?.id))
+        vetList: this.vets
       }
     });
 

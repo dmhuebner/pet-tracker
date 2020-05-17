@@ -8,6 +8,7 @@
 
         <mat-accordion *ngIf="userId && pet?.id" multi="true">
             <mat-expansion-panel
+                    class="vet-info-panel"
                     (opened)="vetInfoOpen = true"
                     (closed)="vetInfoOpen = false">
                 <mat-expansion-panel-header>
@@ -40,6 +41,7 @@
             </mat-expansion-panel>
 
             <mat-expansion-panel
+                    class="shots-info-panel"
                     (opened)="shotsInfoOpen = true"
                     (closed)="shotsInfoOpen = false">
                 <mat-expansion-panel-header>
@@ -69,7 +71,7 @@
                 </app-shots-container>
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel class="medical-events-panel">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Medical Events
@@ -86,7 +88,7 @@
                 <!--                </app-vets-container>-->
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel class="medications-panel">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Medications
@@ -96,11 +98,10 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <!--                <app-vets-container-->
-                <!--                        [petId]="petId"-->
-                <!--                        [petList]="petList"-->
-                <!--                        [userId]="userId">-->
-                <!--                </app-vets-container>-->
+                <app-medications-container
+                        [vets]="vets"
+                        [pet]="pet">
+                </app-medications-container>
             </mat-expansion-panel>
         </mat-accordion>
 

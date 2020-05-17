@@ -30,7 +30,7 @@ export class ShotsContainerComponent implements OnInit {
       minWidth: '400px',
       minHeight: '150px',
       data: {
-        confirmHeading: `Delete "${shotToDelete.shot}" shot?`
+        confirmHeading: `Delete "${shotToDelete.shot}" shot record?`
       }
     });
 

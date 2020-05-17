@@ -26,6 +26,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { NewShotContainerComponent } from './containers/new-shot-container/new-shot-container.component';
 import { ShotFormComponent } from './components/shot-form/shot-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MedicationsContainerComponent } from './containers/medications-container/medications-container.component';
+import { MedicationsListComponent } from './components/medications-list/medications-list.component';
+import { MedicationsListItemComponent } from './components/medications-list-item/medications-list-item.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -42,6 +46,9 @@ import { MatSelectModule } from '@angular/material/select';
         ShotsListComponent,
         NewShotContainerComponent,
         ShotFormComponent,
+        MedicationsContainerComponent,
+        MedicationsListComponent,
+        MedicationsListItemComponent,
     ],
     exports: [
         PetProfileContainerComponent,
@@ -64,7 +71,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatExpansionModule,
         MatTableModule,
         MatSortModule,
-        MatSelectModule
+        MatSelectModule,
+        MatCheckboxModule
     ]
 })
 export class PetModule { }
