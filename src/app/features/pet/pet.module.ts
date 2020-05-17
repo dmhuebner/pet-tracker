@@ -19,6 +19,8 @@ import { AccountModule } from '../account/account.module';
 import { NewPetContainerComponent } from './containers/new-pet-container/new-pet-container.component';
 import { VetModule } from '../vet/vet.module';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ShotsContainerComponent } from './containers/shots-container/shots-container.component';
+import { ShotsListComponent } from './components/shots-list/shots-list.component';
 
 
 
@@ -31,6 +33,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
         PetProfileFormComponent,
         BirthdayToAgePipe,
         MedicalInfoContainerComponent,
+        ShotsContainerComponent,
+        ShotsListComponent,
     ],
     exports: [
         PetProfileContainerComponent,

@@ -7,14 +7,29 @@
     <mat-card-content>
 
         <mat-accordion *ngIf="userId && petId">
-            <mat-expansion-panel>
+            <mat-expansion-panel
+                    (opened)="vetInfoOpen = true"
+                    (closed)="vetInfoOpen = false">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>
+                    <mat-panel-title
+                            class="vet-info-title"
+                            [class.vetInfoOpen]="vetInfoOpen">
                         Vet Info
                     </mat-panel-title>
-<!--                    <mat-panel-description>-->
-<!--                        Vet related information-->
-<!--                    </mat-panel-description>-->
+                <mat-panel-description
+                        class="vet-info-description"
+                        [class.vetInfoOpen]="vetInfoOpen">
+                    Your pet's vet information
+                </mat-panel-description>
+                    <div *ngIf="vetInfoOpen">
+                        <button mat-flat-button
+                                class="add-vet-btn"
+                                color="secondary"
+                                (click)="gotToAccount()">
+                            <mat-icon>add</mat-icon>
+                            Add Vet
+                        </button>
+                    </div>
                 </mat-expansion-panel-header>
 
                 <app-vets-container
@@ -22,6 +37,36 @@
                         [petList]="petList"
                         [userId]="userId">
                 </app-vets-container>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Shots Info
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Shots and vaccination info
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <app-shots-container></app-shots-container>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Medical Events
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Track your pet's medical events
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <!--                <app-vets-container-->
+                <!--                        [petId]="petId"-->
+                <!--                        [petList]="petList"-->
+                <!--                        [userId]="userId">-->
+                <!--                </app-vets-container>-->
             </mat-expansion-panel>
         </mat-accordion>
 
