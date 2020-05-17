@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Pet } from '../../interfaces/pet.interface';
 
 @Component({
   selector: 'app-shots-container',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shots-container.component.scss']
 })
 export class ShotsContainerComponent implements OnInit {
+
+  @Input() pet: Pet;
 
   constructor() { }
 

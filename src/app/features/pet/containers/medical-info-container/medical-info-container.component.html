@@ -6,7 +6,7 @@
     </mat-card-header>
     <mat-card-content>
 
-        <mat-accordion *ngIf="userId && petId">
+        <mat-accordion *ngIf="userId && pet?.id">
             <mat-expansion-panel
                     (opened)="vetInfoOpen = true"
                     (closed)="vetInfoOpen = false">
@@ -33,7 +33,7 @@
                 </mat-expansion-panel-header>
 
                 <app-vets-container
-                        [petId]="petId"
+                        [petId]="pet?.id"
                         [petList]="petList"
                         [userId]="userId">
                 </app-vets-container>
@@ -49,7 +49,9 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <app-shots-container></app-shots-container>
+                <app-shots-container
+                        [pet]="pet">
+                </app-shots-container>
             </mat-expansion-panel>
 
             <mat-expansion-panel>

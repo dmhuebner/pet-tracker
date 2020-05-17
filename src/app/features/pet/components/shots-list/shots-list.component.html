@@ -1,1 +1,39 @@
-<p>shots-list works!</p>
+<table class="shots-table mat-elevation-z2"
+       mat-table [dataSource]="shotsDataSource"
+       matSort>
+
+    <!-- Shot Column -->
+    <ng-container matColumnDef="shot">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Shot</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.shot}}
+        </td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.date?.toDate() | date : 'shortDate'}}
+        </td>
+    </ng-container>
+
+    <!-- Vet Column -->
+    <ng-container matColumnDef="vet">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vet</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.vetName}}
+        </td>
+    </ng-container>
+
+    <!-- Notes Column -->
+    <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.notes}}
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

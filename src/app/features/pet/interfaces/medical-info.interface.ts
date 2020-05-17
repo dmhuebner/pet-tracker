@@ -1,5 +1,5 @@
-import { Vet } from '../../vet/interfaces/vet.interface';
+import { PetShot } from './pet-shot.interface';
 
 export interface MedicalInfo {
-    vets: Vet[];
+    shots?: PetShot[];
 }

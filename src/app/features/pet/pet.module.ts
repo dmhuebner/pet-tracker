@@ -21,6 +21,8 @@ import { VetModule } from '../vet/vet.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ShotsContainerComponent } from './containers/shots-container/shots-container.component';
 import { ShotsListComponent } from './components/shots-list/shots-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -54,7 +56,9 @@ import { ShotsListComponent } from './components/shots-list/shots-list.component
         MatListModule,
         AccountModule,
         VetModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatTableModule,
+        MatSortModule
     ]
 })
 export class PetModule { }
