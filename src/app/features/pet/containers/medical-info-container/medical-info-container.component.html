@@ -21,15 +21,15 @@
                         [class.vetInfoOpen]="vetInfoOpen">
                     Your pet's vet information
                 </mat-panel-description>
-                    <div *ngIf="vetInfoOpen">
-                        <button mat-flat-button
-                                class="add-vet-btn"
-                                color="secondary"
-                                (click)="gotToAccount()">
-                            <mat-icon>add</mat-icon>
-                            Add Vet
-                        </button>
-                    </div>
+                <div *ngIf="vetInfoOpen">
+                    <button mat-flat-button
+                            class="add-vet-btn"
+                            color="secondary"
+                            (click)="gotToAccount()">
+                        <mat-icon>add</mat-icon>
+                        Add Vet
+                    </button>
+                </div>
                 </mat-expansion-panel-header>
 
                 <app-vets-container
@@ -39,7 +39,9 @@
                 </app-vets-container>
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel
+                    (opened)="shotsInfoOpen = true"
+                    (closed)="shotsInfoOpen = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Shots Info
@@ -47,6 +49,15 @@
                     <mat-panel-description>
                         Shots and vaccination info
                     </mat-panel-description>
+                    <div *ngIf="shotsInfoOpen">
+                        <button mat-flat-button
+                                class="add-shot-btn"
+                                color="secondary"
+                                (click)="addShot()">
+                            <mat-icon>add</mat-icon>
+                            Add Shot
+                        </button>
+                    </div>
                 </mat-expansion-panel-header>
 
                 <app-shots-container

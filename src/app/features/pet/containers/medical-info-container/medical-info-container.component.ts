@@ -15,6 +15,7 @@ export class MedicalInfoContainerComponent implements OnInit {
   @Input() petList: PetRef[];
 
   vetInfoOpen = false;
+  shotsInfoOpen = false;
 
   constructor(private router: Router) { }
 
@@ -23,6 +24,10 @@ export class MedicalInfoContainerComponent implements OnInit {
 
   gotToAccount() {
     this.router.navigate(['account'])
+  }
+
+  addShot() {
+
   }
 
 }
