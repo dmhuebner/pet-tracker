@@ -20,12 +20,12 @@ export class ShotsListComponent implements OnInit, OnChanges {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   ngOnInit(): void {
-    this.shotsDataSource = new MatTableDataSource(this.petShots.sort(this.compareShots));
+    this.shotsDataSource = new MatTableDataSource(this.petShots?.sort(this.compareShots));
     this.shotsDataSource.sort = this.sort;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.shotsDataSource = new MatTableDataSource(this.petShots.sort(this.compareShots));
+    this.shotsDataSource = new MatTableDataSource(this.petShots?.sort(this.compareShots));
     this.shotsDataSource.sort = this.sort;
   }
 
