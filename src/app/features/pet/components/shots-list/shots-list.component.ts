@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { PetShot } from '../../interfaces/pet-shot.interface';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,7 +12,9 @@ export class ShotsListComponent implements OnInit, OnChanges {
 
   @Input() petShots: PetShot[];
 
-  displayedColumns: string[] = ['shot', 'date', 'vet', 'notes'];
+  @Output() clickedDelete = new EventEmitter<PetShot>();
+
+  displayedColumns: string[] = ['shot', 'date', 'vet', 'notes', 'delete'];
   shotsDataSource;
 
   constructor() { }
@@ -29,7 +31,11 @@ export class ShotsListComponent implements OnInit, OnChanges {
     this.shotsDataSource.sort = this.sort;
   }
 
-  compareShots(shotA, shotB) {
+  deleteShot(shot: PetShot) {
+    this.clickedDelete.emit(shot);
+  }
+
+  private compareShots(shotA, shotB) {
     if (shotA.date?.toDate() < shotB.date?.toDate()) {
       return 1;
     }

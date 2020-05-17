@@ -1,3 +1,4 @@
 <app-shots-list
-        [petShots]="pet?.medical?.shots">
+        [petShots]="pet?.medical?.shots"
+        (clickedDelete)="confirmShotDelete($event)">
 </app-shots-list>

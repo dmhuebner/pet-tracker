@@ -1,4 +1,13 @@
 .shots-table {
   width: 100%;
   padding: 1rem;
+
+  td {
+    padding: 0.4rem;
+  }
+
+  .delete-btn {
+    color: #ccc;
+    margin-left: auto;
+  }
 }

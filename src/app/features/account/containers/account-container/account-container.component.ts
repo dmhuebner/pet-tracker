@@ -94,7 +94,6 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
           newPet.medical = {
               shots: []
           };
-          console.log('New Pet', newPet);
           return this.petService.createPet(newPet, this.account.userId).then(petId => {
               return this.addPetRefToAccount(newPet, petId);
           });
