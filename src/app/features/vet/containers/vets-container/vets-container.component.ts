@@ -5,7 +5,6 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PetRef } from '../../../account/interfaces/pet-ref.interface';
 import { Router } from '@angular/router';
-import { NewVetComponent } from '../../components/new-vet/new-vet.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/components/confirm-dialog/confirm-dialog.component';
 

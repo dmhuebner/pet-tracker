@@ -1,11 +1,10 @@
 <section class="vets-list-container">
     <header class="vet-list-header">
-        <h3 class="vets-list-heading">Vet Info</h3>
         <div>
             <ng-content></ng-content>
         </div>
     </header>
-    <mat-divider></mat-divider>
+    <hr>
     <ng-container *ngFor="let vet of vets; index as i">
         <mat-list>
             <app-vet-list-item
