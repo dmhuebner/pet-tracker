@@ -23,6 +23,9 @@ import { ShotsContainerComponent } from './containers/shots-container/shots-cont
 import { ShotsListComponent } from './components/shots-list/shots-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { NewShotContainerComponent } from './containers/new-shot-container/new-shot-container.component';
+import { ShotFormComponent } from './components/shot-form/shot-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -37,6 +40,8 @@ import { MatSortModule } from '@angular/material/sort';
         MedicalInfoContainerComponent,
         ShotsContainerComponent,
         ShotsListComponent,
+        NewShotContainerComponent,
+        ShotFormComponent,
     ],
     exports: [
         PetProfileContainerComponent,
@@ -58,7 +63,8 @@ import { MatSortModule } from '@angular/material/sort';
         VetModule,
         MatExpansionModule,
         MatTableModule,
-        MatSortModule
+        MatSortModule,
+        MatSelectModule
     ]
 })
 export class PetModule { }

@@ -1,0 +1,54 @@
+<div class="form-container">
+    <form [formGroup]="shotForm" class="shot-form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Shot</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   required
+                   formControlName="shot">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Date</mat-label>
+            <input matInput
+                   [matDatepicker]="datePicker"
+                   autocomplete="off"
+                   formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field
+                appearance="outline"
+                class="full-width-field"
+                *ngIf="vets?.length">
+            <mat-label>Vet</mat-label>
+            <mat-select formControlName="vet">
+                <mat-option
+                        *ngFor="let vet of vets"
+                        [value]="vet.name">
+                    {{vet.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Notes</mat-label>
+            <textarea matInput
+                   autocomplete="off"
+                   formControlName="notes">
+            </textarea>
+        </mat-form-field>
+        <div class="btn-group">
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="shotForm.invalid"
+                    type="submit">
+                Save
+            </button>
+            <button mat-raised-button
+                    color="secondary"
+                    (click)="cancel()"
+                    type="button">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>

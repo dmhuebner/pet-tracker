@@ -66,23 +66,23 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
     });
   }
 
-    openAddVetDialog(allVets: Vet[]): void {
-        const dialogRef = this.dialog.open(NewVetComponent, {
-            minWidth: '400px',
-            data: {
-                allVets,
-                petList: this.account.pets
-            }
-        });
+  openAddVetDialog(allVets: Vet[]): void {
+    const dialogRef = this.dialog.open(NewVetComponent, {
+        minWidth: '400px',
+        data: {
+            allVets,
+            petList: this.account.pets
+        }
+    });
 
-        dialogRef.afterClosed().pipe(
-            takeUntil(this.unsubscribe$)
-        ).subscribe(newVetList => {
-            if (newVetList) {
-                this.updateVetList(newVetList);
-            }
-        });
-    }
+    dialogRef.afterClosed().pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(newVetList => {
+        if (newVetList) {
+            this.updateVetList(newVetList);
+        }
+    });
+  }
 
   goToPetProfile(petName): void {
       this.router.navigate(['/profile', petName])

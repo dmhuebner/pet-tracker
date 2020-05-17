@@ -6,19 +6,19 @@
     </mat-card-header>
     <mat-card-content>
 
-        <mat-accordion *ngIf="userId && pet?.id">
+        <mat-accordion *ngIf="userId && pet?.id" multi="true">
             <mat-expansion-panel
                     (opened)="vetInfoOpen = true"
                     (closed)="vetInfoOpen = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title
                             class="vet-info-title"
-                            [class.vetInfoOpen]="vetInfoOpen">
+                            [class.vet-info-open]="vetInfoOpen">
                         Vet Info
                     </mat-panel-title>
                 <mat-panel-description
                         class="vet-info-description"
-                        [class.vetInfoOpen]="vetInfoOpen">
+                        [class.vet-info-open]="vetInfoOpen">
                     Your pet's vet information
                 </mat-panel-description>
                 <div *ngIf="vetInfoOpen">
@@ -43,17 +43,21 @@
                     (opened)="shotsInfoOpen = true"
                     (closed)="shotsInfoOpen = false">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>
+                    <mat-panel-title
+                            class="shots-info-title"
+                            [class.shots-info-open]="shotsInfoOpen">
                         Shots Info
                     </mat-panel-title>
-                    <mat-panel-description>
+                    <mat-panel-description
+                            class="shots-info-description"
+                            [class.shots-info-open]="shotsInfoOpen">
                         Shots and vaccination info
                     </mat-panel-description>
                     <div *ngIf="shotsInfoOpen">
                         <button mat-flat-button
                                 class="add-shot-btn"
                                 color="secondary"
-                                (click)="addShot()">
+                                (click)="openAddShotDialog()">
                             <mat-icon>add</mat-icon>
                             Add Shot
                         </button>
@@ -72,6 +76,23 @@
                     </mat-panel-title>
                     <mat-panel-description>
                         Track your pet's medical events
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <!--                <app-vets-container-->
+                <!--                        [petId]="petId"-->
+                <!--                        [petList]="petList"-->
+                <!--                        [userId]="userId">-->
+                <!--                </app-vets-container>-->
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Medications
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Medication info
                     </mat-panel-description>
                 </mat-expansion-panel-header>
 

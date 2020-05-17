@@ -23,7 +23,6 @@ export class VetsService {
     return this.vetsData.getVetsData(userId).pipe(
         switchMap(vets => {
             if (vets) {
-                console.log('vets', vets);
                 this.vetsState.updateVets(vets);
                 return this.vetsState.vets$;
             } else {

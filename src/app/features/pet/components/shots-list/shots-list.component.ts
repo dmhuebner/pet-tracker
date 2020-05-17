@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { PetShot } from '../../interfaces/pet-shot.interface';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './shots-list.component.html',
   styleUrls: ['./shots-list.component.scss']
 })
-export class ShotsListComponent implements OnInit {
+export class ShotsListComponent implements OnInit, OnChanges {
 
   @Input() petShots: PetShot[];
 
@@ -20,8 +20,23 @@ export class ShotsListComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   ngOnInit(): void {
-    this.shotsDataSource = new MatTableDataSource(this.petShots);
+    this.shotsDataSource = new MatTableDataSource(this.petShots.sort(this.compareShots));
     this.shotsDataSource.sort = this.sort;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.shotsDataSource = new MatTableDataSource(this.petShots.sort(this.compareShots));
+    this.shotsDataSource.sort = this.sort;
+  }
+
+  compareShots(shotA, shotB) {
+    if (shotA.date?.toDate() < shotB.date?.toDate()) {
+      return 1;
+    }
+    if (shotA.date?.toDate() > shotB.date?.toDate()) {
+      return -1;
+    }
+    return 0;
   }
 
 }
