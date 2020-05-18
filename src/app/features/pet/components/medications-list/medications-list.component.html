@@ -1,6 +1,7 @@
 <div *ngFor="let med of medications">
     <app-medications-list-item
             [medication]="med"
-            (deleteMed)="onDeleteMed($event)">
+            (deleteMed)="onDeleteMed($event)"
+            (completeMed)="onCompleteMed($event)">
     </app-medications-list-item>
 </div>

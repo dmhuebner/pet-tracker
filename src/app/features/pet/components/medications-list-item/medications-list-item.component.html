@@ -8,10 +8,14 @@
             <p>{{medication.description}}</p>
         </div>
         <div class="header-btn-group">
-            <button mat-icon-button class="complete-btn">
+            <button mat-icon-button
+                    class="complete-btn"
+                    (click)="onCompleteMed(medication)">
                 <mat-icon>check</mat-icon>
             </button>
-            <button mat-icon-button class="delete-btn" (click)="onDeleteMed(medication)">
+            <button mat-icon-button
+                    class="delete-btn"
+                    (click)="onDeleteMed(medication)">
                 <mat-icon>delete_outline</mat-icon>
             </button>
         </div>
@@ -20,9 +24,9 @@
     <div class="medication-body">
         <div class="instructions-container">
             <span>
-                {{medication.frequency?.amount}}
-                {{medication.frequency?.amount > 1 ? 'times' : 'time'}}
-                each {{medication.frequency?.interval | lowercase}}
+                {{medication.freqAmount}}
+                {{medication.freqAmount > 1 ? 'times' : 'time'}}
+                each {{medication.freqInterval | lowercase}}
             </span>
             <div class="directions-container">
                 <span>

@@ -7,7 +7,9 @@ export interface Medication {
     description?: string;
     instructions: string;
     startDate: Timestamp,
-    frequency?: MedicationFrequency,
+    // frequency?: MedicationFrequency,
+    freqAmount: number;
+    freqInterval: 'Hour' | 'Day' | 'Week' | 'Month' | 'Year';
     endDate?: Timestamp,
     vet?: string;
     complete?: boolean;

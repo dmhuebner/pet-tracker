@@ -54,10 +54,34 @@ export class MedicationsContainerComponent implements OnInit, OnDestroy, OnChang
     });
   }
 
+  confirmCompleteMed(medToComplete: Medication) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      minWidth: '400px',
+      minHeight: '150px',
+      data: {
+        confirmHeading: `Done taking "${medToComplete.name}"?`
+      }
+    });
+
+    dialogRef.afterClosed().pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(deleteConfirmed => {
+      if (deleteConfirmed) {
+        this.completeMed(medToComplete);
+      }
+    });
+  }
+
   deleteMed(medToDelete: Medication): Promise<Pet> {
     const indexToDelete = this.pet.medical.medications.findIndex(med => med.name === medToDelete.name);
     this.pet.medical.medications.splice(indexToDelete, 1);
     return this.petService.updatePet(this.pet)
+  }
+
+  completeMed(medToComplete: Medication): Promise<Pet> {
+    const indexToComplete = this.pet.medical.medications.findIndex(med => med.name === medToComplete.name);
+    this.pet.medical.medications[indexToComplete].complete = true;
+    return this.petService.updatePet(this.pet);
   }
 
 }

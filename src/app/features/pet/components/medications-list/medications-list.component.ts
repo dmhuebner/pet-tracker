@@ -11,6 +11,7 @@ export class MedicationsListComponent implements OnInit {
   @Input() medications: Medication[];
 
   @Output() deleteMed = new EventEmitter<Medication>();
+  @Output() completedMed = new EventEmitter<Medication>();
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class MedicationsListComponent implements OnInit {
 
   onDeleteMed(medToDelete: Medication) {
     this.deleteMed.emit(medToDelete);
+  }
+
+  onCompleteMed(medToComplete: Medication) {
+    this.completedMed.emit(medToComplete);
   }
 
 }

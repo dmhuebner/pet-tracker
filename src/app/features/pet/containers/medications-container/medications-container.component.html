@@ -2,6 +2,7 @@
     <hr>
     <app-medications-list
             [medications]="meds"
-            (deleteMed)="confirmMedDelete($event)">
+            (deleteMed)="confirmMedDelete($event)"
+            (completedMed)="confirmCompleteMed($event)">
     </app-medications-list>
 </section>
