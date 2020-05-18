@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 export interface Medication {
     name: string;
     description?: string;
-    directions: string;
+    instructions: string;
     startDate: Timestamp,
     frequency?: MedicationFrequency,
     endDate?: Timestamp,

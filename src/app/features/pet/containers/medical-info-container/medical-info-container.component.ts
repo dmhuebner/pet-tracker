@@ -10,6 +10,8 @@ import { NewShotContainerComponent } from '../new-shot-container/new-shot-contai
 import { VetsService } from '../../../vet/services/vets.service';
 import { Vet } from '../../../vet/interfaces/vet.interface';
 import { PetService } from '../../services/pet.service';
+import { NewMedicationContainerComponent } from '../new-medication-container/new-medication-container.component';
+import { Medication } from '../../interfaces/medication.interface';
 
 @Component({
   selector: 'app-medical-info-container',
@@ -24,6 +26,7 @@ export class MedicalInfoContainerComponent implements OnInit {
 
   vetInfoOpen = false;
   shotsInfoOpen = false;
+  medsInfoOpen = false;
   vets: Vet[];
   unsubscribe$ = new Subject<true>();
 
@@ -59,9 +62,31 @@ export class MedicalInfoContainerComponent implements OnInit {
     });
   }
 
+  openAddMedicationDialog(): void {
+    const dialogRef = this.dialog.open(NewMedicationContainerComponent, {
+      minWidth: '400px',
+      data: {
+        vetList: this.vets
+      }
+    });
+
+    dialogRef.afterClosed().pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(newMed => {
+      if (newMed) {
+        this.addPetMed(newMed);
+      }
+    });
+  }
+
   private addPetShot(shot: PetShot) {
     this.pet.medical.shots.push(shot);
     this.petService.updatePet(this.pet)
+  }
+
+  private addPetMed(newMed: Medication) {
+    this.pet.medical.medications.push(newMed);
+    this.petService.updatePet(this.pet);
   }
 
 }

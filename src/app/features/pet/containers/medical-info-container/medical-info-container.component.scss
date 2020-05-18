@@ -3,7 +3,9 @@
   .vet-info-title.vet-info-open,
   .vet-info-description.vet-info-open,
   .shots-info-title.shots-info-open,
-  .shots-info-description.shots-info-open {
+  .shots-info-description.shots-info-open,
+  .meds-info-title.meds-info-open,
+  .meds-info-description.meds-info-open{
     margin-top: 0.7rem
   }
 
@@ -15,7 +17,8 @@
   }
 
   .add-vet-btn,
-  .add-shot-btn {
+  .add-shot-btn,
+  .add-med-btn {
     font-size: 0.8rem;
     margin: 0 0.8rem;
 

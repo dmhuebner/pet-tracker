@@ -20,20 +20,21 @@
     <div class="medication-body">
         <div class="instructions-container">
             <span>
-                Give {{medication.frequency.amount}}
-                {{medication.frequency.amount > 1 ? 'times' : 'time'}}
-                each {{medication.frequency.interval | lowercase}}
+                {{medication.frequency?.amount}}
+                {{medication.frequency?.amount > 1 ? 'times' : 'time'}}
+                each {{medication.frequency?.interval | lowercase}}
             </span>
             <div class="directions-container">
                 <span>
-                    {{medication.directions}}
+                    {{medication.instructions}}
                 </span>
             </div>
         </div>
         <div class="details">
-            <div>
+            <div *ngIf="medication.startDate">
                 <span><b>Started: </b></span>
-                <span>{{medication.startDate.toDate() | date : 'short'}}</span>
+<!--                <pre>{{medication.startDate | json}}</pre>-->
+                <span>{{medication.startDate?.toDate() | date : 'short'}}</span>
             </div>
             <div>
                 <span><b>Vet: </b></span>
@@ -42,3 +43,4 @@
         </div>
     </div>
 </section>
+<hr class="med-hr">
