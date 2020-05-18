@@ -24,7 +24,7 @@ export class NewMedicationContainerComponent implements OnInit {
   addNewMed(newMedForm: FormGroup) {
     if (newMedForm.valid) {
       const newMed = newMedForm.value;
-      newMed.startDate = new Timestamp(newMed.startDate.getTime() / 1000, 0);
+      newMed.startDate = new Timestamp(newMed.startDate?.getTime() / 1000, 0);
       this.dialogRef.close(newMed);
     }
   }
