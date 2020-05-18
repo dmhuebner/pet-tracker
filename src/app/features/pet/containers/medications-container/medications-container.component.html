@@ -1,6 +1,7 @@
 <section class="medications-container">
     <hr>
     <app-medications-list
-            [medications]="pet?.medical?.medications">
+            [medications]="meds"
+            (deleteMed)="confirmMedDelete($event)">
     </app-medications-list>
 </section>

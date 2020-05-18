@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Medication } from '../../interfaces/medication.interface';
 
 @Component({
@@ -10,9 +10,15 @@ export class MedicationsListComponent implements OnInit {
 
   @Input() medications: Medication[];
 
+  @Output() deleteMed = new EventEmitter<Medication>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDeleteMed(medToDelete: Medication) {
+    this.deleteMed.emit(medToDelete);
   }
 
 }

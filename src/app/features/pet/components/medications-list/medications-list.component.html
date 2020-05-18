@@ -1,5 +1,6 @@
 <div *ngFor="let med of medications">
     <app-medications-list-item
-            [medication]="med">
+            [medication]="med"
+            (deleteMed)="onDeleteMed($event)">
     </app-medications-list-item>
 </div>
