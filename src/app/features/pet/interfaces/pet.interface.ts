@@ -7,6 +7,7 @@ export interface Pet {
     userId: string;
     name: string;
     animalType: string;
+    profileImages: string[];
     breed?: string;
     description?: string;
     birthday?: Timestamp;

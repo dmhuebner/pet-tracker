@@ -8,7 +8,8 @@
         <app-edit-pet-profile
                 [pet]="pet"
                 (editModeOff)="toggleEditMode()"
-                (editedPet)="onPetEdited($event)">
+                (editedPet)="onPetEdited($event)"
+                (profileImageUploaded)="onProfileImageUpload($event)">
         </app-edit-pet-profile>
     </ng-template>
 

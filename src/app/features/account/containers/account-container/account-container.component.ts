@@ -91,6 +91,7 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
   private addNewPet(newPet: Pet): Promise<Pet> {
       if (newPet) {
           newPet.userId = this.account.userId;
+          newPet.profileImages = [];
           newPet.medical = {
               shots: [],
               medications: []

@@ -2,7 +2,12 @@
     <mat-card class="profile-card" *ngIf="pet">
         <mat-card-header class="card-header">
             <div mat-card-avatar class="profile-image">
-                <img src="https://via.placeholder.com/150" alt="Pet Profile Image">
+                <img src="{{pet.profileImages[pet.profileImages.length - 1]}}"
+                     *ngIf="pet.profileImages?.length > 1"
+                     alt="Pet Profile Image">
+                <img src="https://via.placeholder.com/150"
+                     *ngIf="pet.profileImages?.length <= 1"
+                     alt="Pet Profile Image">
             </div>
             <mat-card-title>Profile</mat-card-title>
             <mat-card-subtitle>
