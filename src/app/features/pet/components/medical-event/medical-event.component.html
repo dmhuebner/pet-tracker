@@ -1,0 +1,27 @@
+<div class="medical-event-container">
+    <div class="left-panel">
+        <div class="medical-event-info">
+            <span><b>Summary: </b></span>
+            <span>{{medicalEvent.summary}}</span>
+        </div>
+        <div class="medical-event-info">
+            <span class="med-event-timestamp">
+                <b>{{medicalEvent.timestamp?.toDate() | date : 'short'}}</b>
+            </span>
+        </div>
+        <div class="medical-event-info">
+            <span><b>Type: </b></span>
+            <span>{{medicalEvent.type}}</span>
+        </div>
+        <div class="medical-event-info">
+            <span>Med Attention Required: </span>
+            <span>{{medicalEvent.medicalAttentionRequired ? 'Yes' : 'No'}}</span>
+        </div>
+    </div>
+    <div class="right-panel">
+        <div class="medical-event-info">
+            <span><b>Notes: </b></span>
+            <p>{{medicalEvent.notes}}</p>
+        </div>
+    </div>
+</div>

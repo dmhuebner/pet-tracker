@@ -1,0 +1,9 @@
+.medical-events-container {
+  max-height: 40rem;
+  overflow: scroll;
+
+  .medical-events-header {
+    display: flex;
+    justify-content: space-around;
+  }
+}

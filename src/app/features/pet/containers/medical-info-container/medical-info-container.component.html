@@ -81,11 +81,9 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
 
-                <!--                <app-vets-container-->
-                <!--                        [petId]="petId"-->
-                <!--                        [petList]="petList"-->
-                <!--                        [userId]="userId">-->
-                <!--                </app-vets-container>-->
+                <app-medical-events-container
+                        [medicalEvents]="pet.medical?.medicalEvents">
+                </app-medical-events-container>
             </mat-expansion-panel>
 
             <mat-expansion-panel

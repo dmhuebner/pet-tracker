@@ -32,6 +32,9 @@ import { MedicationsListItemComponent } from './components/medications-list-item
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NewMedicationContainerComponent } from './containers/new-medication-container/new-medication-container.component';
 import { MedicationFormComponent } from './components/medication-form/medication-form.component';
+import { MedicalEventsContainerComponent } from './containers/medical-events-container/medical-events-container.component';
+import { MedicalEventsComponent } from './components/medical-events/medical-events.component';
+import { MedicalEventComponent } from './components/medical-event/medical-event.component';
 
 
 
@@ -53,6 +56,9 @@ import { MedicationFormComponent } from './components/medication-form/medication
         MedicationsListItemComponent,
         NewMedicationContainerComponent,
         MedicationFormComponent,
+        MedicalEventsContainerComponent,
+        MedicalEventsComponent,
+        MedicalEventComponent,
     ],
     exports: [
         PetProfileContainerComponent,
