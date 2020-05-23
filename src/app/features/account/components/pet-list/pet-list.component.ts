@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PetRef } from '../../interfaces/pet-ref.interface';
 
 @Component({
   selector: 'app-pet-list',
@@ -7,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PetListComponent implements OnInit {
 
-  @Input() pets: any[];
+  @Input() pets: PetRef[];
 
   @Output() petSelected = new EventEmitter<string>();
 

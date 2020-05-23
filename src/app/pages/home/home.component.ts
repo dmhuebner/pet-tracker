@@ -6,6 +6,7 @@ import { EMPTY, Subject } from 'rxjs';
 import { PetService } from '../../features/pet/services/pet.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pet } from '../../features/pet/interfaces/pet.interface';
+import { Account } from '../../features/account/interfaces/account.interface';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { Pet } from '../../features/pet/interfaces/pet.interface';
 export class HomeComponent implements OnInit, OnDestroy {
 
   currentPet: Pet;
+  account: Account;
   unsubscribe$ = new Subject();
 
   constructor(private authService: AuthService,
@@ -26,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.accountService.account$.pipe(
         switchMap((account) => {
             if (account) {
+                this.account = account;
                 const petName = this.route.snapshot.paramMap.get('pet');
                 const petRef = account.pets.find(pet => pet.name.toLowerCase() === petName.toLowerCase());
                 return this.petService.getPet(petRef.id);

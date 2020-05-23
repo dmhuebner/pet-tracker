@@ -4,6 +4,10 @@
     <div class="pet"
          *ngFor="let pet of pets"
         (click)="onSelectPet(pet.name)">
+<!--        <pre>{{pet | json}}</pre>-->
+<!--        <img *ngIf="pet.profileImages?.length > 1"-->
+<!--             alt="Pet Profile Image"-->
+<!--             src="{{pet.profileImages[pet.profileImages.length - 1]}}">-->
         <h4 class="pet-name">
             {{pet.name}}
             <span class="breed">

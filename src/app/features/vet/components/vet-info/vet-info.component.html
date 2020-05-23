@@ -1,0 +1,75 @@
+<!--<pre>{{vet | json}}</pre>-->
+<div class="vet-container">
+    <div class="inner-wrapper">
+        <div class="info-panel left-panel">
+            <h3 class="vet-name">
+                <a href="{{vet.website}}"
+                   target="_blank">
+                    {{vet.name}}
+                    <mat-icon
+                            class="primary-vet-badge"
+                            *ngIf="vet.primary">
+                        star
+                    </mat-icon>
+                </a>
+            </h3>
+            <p class="vet-address" *ngIf="vet.address">
+                <a href="https://maps.google.com/?q={{vet.name}}, {{vet.address}}"
+                   target="_blank">
+                    <mat-icon>location_on</mat-icon>
+                    {{vet.address}}
+                </a>
+            </p>
+            <div class="pet-list" *ngIf="showPetList">
+                <h4 class="pet-list-label text-muted">Pets:</h4>
+                <mat-chip-list>
+                    <mat-chip
+                            *ngFor="let petId of vet.petIds"
+                            selected="true"
+                            color="secondary"
+                            class="pet-chip"
+                            (click)="onClickPet(petId)">
+                        {{getPetName(petId)}}
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+        <div class="info-panel right-panel">
+            <div>
+                <p class="info-element vet-dr-name" *ngIf="vet.drName">
+                    <span><b>{{vet.drName}}</b></span>
+                </p>
+                <p class="info-element vet-phone" *ngIf="vet.phone">
+                    <span class="info-label">Phone: </span>
+                    <a href="tel:{{vet.phone}}"
+                       target="_blank">
+                        <mat-icon>phone</mat-icon>
+                        <span>{{vet.phone}}</span>
+                    </a>
+                </p>
+                <p class="info-element" *ngIf="vet.emergencyPhone">
+                    <span class="info-label">Emergency: </span>
+                    <a href="tel:{{vet.emergencyPhone}}"
+                       target="_blank">
+                        <mat-icon>phone</mat-icon>
+                        <span>{{vet.emergencyPhone}}</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="vet-type-container">
+            <p class="info-element vet-type" *ngIf="vet.vetType">
+                <span>{{vet.vetType}}</span>
+            </p>
+        </div>
+    </div>
+    <div>
+        <button mat-icon-button
+                class="edit-vet-btn"
+                aria-label="Edit Button"
+                (click)="onEditModeClicked()">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+<hr class="vet-info-item-hr">

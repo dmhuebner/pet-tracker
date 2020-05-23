@@ -1,0 +1,6 @@
+<h3>Add Medication</h3>
+<app-medication-form
+        [vets]="vets"
+        (submitted)="addNewMed($event)"
+        (cancelled)="close()">
+</app-medication-form>

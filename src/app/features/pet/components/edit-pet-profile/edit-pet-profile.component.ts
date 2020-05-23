@@ -13,6 +13,7 @@ export class EditPetProfileComponent implements OnInit {
 
   @Output() editedPet = new EventEmitter<Pet>();
   @Output() editModeOff = new EventEmitter<true>();
+  @Output() profileImageUploaded = new EventEmitter<File>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -27,5 +28,9 @@ export class EditPetProfileComponent implements OnInit {
 
   turnEditModeOff() {
     this.editModeOff.emit(true);
+  }
+
+  onProfileImageUploaded(event) {
+    this.profileImageUploaded.emit(event.target.files[0]);
   }
 }

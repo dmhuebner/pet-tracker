@@ -1,0 +1,95 @@
+.vet-container {
+  display: flex;
+  justify-content: space-between;
+
+  .text-muted {
+    color: #888;
+  }
+
+  .inner-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+
+    .info-panel {
+
+      .pet-list {
+        display: flex;
+
+        .pet-list-label {
+          margin: 0.5rem;
+        }
+
+        .pet-chip {
+          cursor: pointer;
+        }
+      }
+
+      .info-element {
+        display: flex;
+
+        .info-label {
+          color: #888;
+        }
+
+        &.vet-dr-name {
+          color: #999;
+        }
+      }
+
+      a {
+        display: flex;
+        margin-left: 0.7rem;
+      }
+
+      &.left-panel {
+        min-width: 20rem;
+
+        .vet-name {
+
+          .primary-vet-badge {
+            color: orange;
+            font-size: 0.9rem;
+            margin: 0 0 0 0.5rem;
+          }
+        }
+      }
+
+      &.right-panel {
+        margin-left: 3rem;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    .vet-type-container {
+      margin-left: 0.8rem;
+
+      .vet-type {
+        color: #999;
+      }
+    }
+  }
+
+  .edit-vet-btn {
+    color: #888;
+    margin-right: -1rem;
+  }
+}
+
+hr.vet-info-item-hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #fff;
+}
+
+
+@media all and (max-width: 790px) {
+  .vet-container {
+    .inner-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

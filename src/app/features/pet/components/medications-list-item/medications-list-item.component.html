@@ -1,0 +1,50 @@
+<section class="medication-container" *ngIf="medication">
+<!--    <pre>{{medication | json}}</pre>-->
+    <header class="medication-header">
+        <div class="med-name-container">
+            <h3>{{medication.name}}</h3>
+        </div>
+        <div class="description-container">
+            <p>{{medication.description}}</p>
+        </div>
+        <div class="header-btn-group">
+            <button mat-icon-button
+                    class="complete-btn"
+                    (click)="onCompleteMed(medication)">
+                <mat-icon>check</mat-icon>
+            </button>
+            <button mat-icon-button
+                    class="delete-btn"
+                    (click)="onDeleteMed(medication)">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
+        </div>
+    </header>
+    <span><b>Instructions:</b></span>
+    <div class="medication-body">
+        <div class="instructions-container">
+            <span>
+                {{medication.freqAmount}}
+                {{medication.freqAmount > 1 ? 'times' : 'time'}}
+                each {{medication.freqInterval | lowercase}}
+            </span>
+            <div class="directions-container">
+                <span>
+                    {{medication.instructions}}
+                </span>
+            </div>
+        </div>
+        <div class="details">
+            <div *ngIf="medication.startDate">
+                <span><b>Started: </b></span>
+<!--                <pre>{{medication.startDate | json}}</pre>-->
+                <span>{{medication.startDate?.toDate() | date : 'short'}}</span>
+            </div>
+            <div>
+                <span><b>Vet: </b></span>
+                <span>{{medication.vet}}</span>
+            </div>
+        </div>
+    </div>
+</section>
+<hr class="med-hr">

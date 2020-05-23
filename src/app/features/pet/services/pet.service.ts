@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { PetDataService } from './pet-data.service';
 import { PetStateService } from './pet-state.service';
 import { switchMap } from 'rxjs/operators';
+import { FileStorageService } from '../../../shared/services/file-storage.service';
+import { fromPromise } from 'rxjs/internal-compatibility';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class PetService {
   currentPet$: Observable<Pet>;
 
   constructor(private petData: PetDataService,
-              private petState: PetStateService) {
+              private petState: PetStateService,
+              private fileStorageService: FileStorageService) {
     this.currentPet$ = this.petState.pet$;
   }
 
@@ -32,5 +35,14 @@ export class PetService {
 
   createPet(pet: Pet, userId: string): Promise<string> {
     return this.petData.createPet(pet, userId);
+  }
+
+  uploadPetImage(pet: Pet, file: File): Observable<Pet> {
+    return this.fileStorageService.uploadFile('PetImages', pet.id, file).pipe(
+        switchMap(imageUrl => {
+          pet.profileImages.push(imageUrl);
+          return fromPromise(this.updatePet(pet))
+        })
+    );
   }
 }

@@ -1,0 +1,20 @@
+<section class="vets-list-container">
+    <header class="vet-list-header">
+        <div>
+            <ng-content></ng-content>
+        </div>
+    </header>
+    <hr>
+    <ng-container *ngFor="let vet of vets; index as i">
+        <mat-list>
+            <app-vet-list-item
+                    [vet]="vet"
+                    [petList]="petList"
+                    [showPetList]="showPetList"
+                    (petClicked)="onPetClicked($event)"
+                    (vetEdited)="onVetEdited($event, i)"
+                    (vetDeleted)="onVetDeleted($event, i)">
+            </app-vet-list-item>
+        </mat-list>
+    </ng-container>
+</section>

@@ -7,7 +7,7 @@
       <a mat-list-item
          *ngIf="accountService.account$ | async as account"
          class="nav-item"
-         routerLink="/profile/{{currentPetName || account.pets[0].name}}"
+         routerLink="/profile/{{currentPetName || account.pets[0]?.name}}"
          routerLinkActive="active"
          href="#">
         <mat-icon aria-label="profile">fingerprint</mat-icon>

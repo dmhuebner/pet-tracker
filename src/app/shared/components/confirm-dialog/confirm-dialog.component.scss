@@ -1,0 +1,19 @@
+.confirm-dialog-container {
+  display: flex;
+  min-height: 150px;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .dialog-header {
+    margin-bottom: auto;
+
+    .heading {
+      text-align: center;
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-around;
+  }
+}

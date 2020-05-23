@@ -1,0 +1,131 @@
+<mat-card class="medical-info-card">
+    <mat-card-header>
+<!--        <div mat-card-avatar class="medical-header-image"></div>-->
+        <mat-card-title>Health</mat-card-title>
+<!--        <mat-card-subtitle></mat-card-subtitle>-->
+    </mat-card-header>
+    <mat-card-content>
+
+        <mat-accordion *ngIf="userId && pet?.id" multi="true">
+            <mat-expansion-panel
+                    class="vet-info-panel"
+                    (opened)="vetInfoOpen = true"
+                    (closed)="vetInfoOpen = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title
+                            class="vet-info-title"
+                            [class.vet-info-open]="vetInfoOpen">
+                        Vet Info
+                    </mat-panel-title>
+                <mat-panel-description
+                        class="vet-info-description"
+                        [class.vet-info-open]="vetInfoOpen">
+                    Your pet's vet information
+                </mat-panel-description>
+                <div *ngIf="vetInfoOpen">
+                    <button mat-flat-button
+                            class="add-vet-btn"
+                            color="secondary"
+                            (click)="gotToAccount()">
+                        <mat-icon>add</mat-icon>
+                        Add Vet
+                    </button>
+                </div>
+                </mat-expansion-panel-header>
+
+                <app-vets-container
+                        [petId]="pet?.id"
+                        [petList]="petList"
+                        [userId]="userId">
+                </app-vets-container>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                    class="shots-info-panel"
+                    (opened)="shotsInfoOpen = true"
+                    (closed)="shotsInfoOpen = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title
+                            class="shots-info-title"
+                            [class.shots-info-open]="shotsInfoOpen">
+                        Shots Info
+                    </mat-panel-title>
+                    <mat-panel-description
+                            class="shots-info-description"
+                            [class.shots-info-open]="shotsInfoOpen">
+                        Shots and vaccination info
+                    </mat-panel-description>
+                    <div *ngIf="shotsInfoOpen">
+                        <button mat-flat-button
+                                class="add-shot-btn"
+                                color="secondary"
+                                (click)="openAddShotDialog()">
+                            <mat-icon>add</mat-icon>
+                            Add Shot
+                        </button>
+                    </div>
+                </mat-expansion-panel-header>
+
+                <app-shots-container
+                        [pet]="pet">
+                </app-shots-container>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="medical-events-panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Medical Events
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Track your pet's medical events
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <!--                <app-vets-container-->
+                <!--                        [petId]="petId"-->
+                <!--                        [petList]="petList"-->
+                <!--                        [userId]="userId">-->
+                <!--                </app-vets-container>-->
+            </mat-expansion-panel>
+
+            <mat-expansion-panel
+                    class="medications-panel"
+                    (opened)="medsInfoOpen = true"
+                    (closed)="medsInfoOpen = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title
+                            class="meds-info-title"
+                            [class.meds-info-open]="medsInfoOpen">
+                        Medications
+                    </mat-panel-title>
+                    <mat-panel-description
+                            class="meds-info-description"
+                            [class.meds-info-open]="medsInfoOpen">
+                        Medication info
+<!--                        TODO add a toggle between Medication info and Medication History-->
+                    </mat-panel-description>
+                    <div *ngIf="medsInfoOpen">
+                        <button mat-flat-button
+                                class="add-med-btn"
+                                color="secondary"
+                                (click)="openAddMedicationDialog()">
+                            <mat-icon>add</mat-icon>
+                            Add Med
+                        </button>
+                    </div>
+                </mat-expansion-panel-header>
+
+                <app-medications-container
+                        [vets]="vets"
+                        [pet]="pet">
+                </app-medications-container>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+<!--        <button mat-button>LIKE</button>-->
+<!--        <button mat-button>SHARE</button>-->
+    </mat-card-actions>
+</mat-card>

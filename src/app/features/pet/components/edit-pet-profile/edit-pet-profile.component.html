@@ -3,7 +3,17 @@
         <mat-card-header class="card-header">
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>Edit {{pet.name}}'s Profile</mat-card-title>
+            <mat-card-subtitle>
+
+            </mat-card-subtitle>
         </mat-card-header>
+        <div class="upload-profile-image-btn">
+            <mat-label>Upload Profile Image</mat-label>
+            <input type="file"
+                   (change)="onProfileImageUploaded($event)"
+                   name="image"
+                   autocomplete="off"/>
+        </div>
         <app-pet-profile-form
                 [pet]="pet"
                 (formCancelled)="turnEditModeOff()"

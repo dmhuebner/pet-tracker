@@ -2,4 +2,9 @@
   <app-pet-profile-container
           [pet]="currentPet">
   </app-pet-profile-container>
+  <app-medical-info-container
+          [userId]="account?.userId"
+          [pet]="currentPet"
+          [petList]="account?.pets">
+  </app-medical-info-container>
 </div>

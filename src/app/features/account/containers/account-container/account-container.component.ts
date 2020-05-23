@@ -1,15 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { EMPTY, Subject } from 'rxjs';
+import { EMPTY, Observable, Subject, throwError } from 'rxjs';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { catchError, switchMap, takeUntil } from 'rxjs/operators';
 import { Account } from '../../interfaces/account.interface';
-import { GravatarService } from '../../../pet/gravatar.service';
+import { GravatarService } from '../../services/gravatar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Pet } from '../../../pet/interfaces/pet.interface';
 import { PetService } from '../../../pet/services/pet.service';
 import { Router } from '@angular/router';
-import { NewPetContainerComponent } from '../new-pet-container/new-pet-container.component';
+import { NewPetContainerComponent } from '../../../pet/containers/new-pet-container/new-pet-container.component';
+import { NewVetComponent } from '../../../vet/components/new-vet/new-vet.component';
+import { Vet } from '../../../vet/interfaces/vet.interface';
+import { VetsService } from '../../../vet/services/vets.service';
 
 @Component({
   selector: 'app-account-container',
@@ -27,13 +30,18 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
               private gravatarService: GravatarService,
               public dialog: MatDialog,
               private petService: PetService,
-              private router: Router) { }
+              private router: Router,
+              private vetsService: VetsService) { }
 
   ngOnInit(): void {
     this.auth.user$.pipe(
         switchMap(user => {
           this.userImageUrl = this.gravatarService.getGravatar(user.email);
           return user ? this.accountService.getAccount(user) : EMPTY;
+        }),
+        catchError(err => {
+            console.log('err', err);
+            return throwError(err);
         }),
         takeUntil(this.unsubscribe$)
     ).subscribe(account => {
@@ -58,6 +66,24 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
     });
   }
 
+  openAddVetDialog(allVets: Vet[]): void {
+    const dialogRef = this.dialog.open(NewVetComponent, {
+        minWidth: '400px',
+        data: {
+            allVets,
+            petList: this.account.pets
+        }
+    });
+
+    dialogRef.afterClosed().pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(newVetList => {
+        if (newVetList) {
+            this.updateVetList(newVetList);
+        }
+    });
+  }
+
   goToPetProfile(petName): void {
       this.router.navigate(['/profile', petName])
   }
@@ -65,11 +91,19 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
   private addNewPet(newPet: Pet): Promise<Pet> {
       if (newPet) {
           newPet.userId = this.account.userId;
-          console.log('New Pet', newPet);
+          newPet.profileImages = [];
+          newPet.medical = {
+              shots: [],
+              medications: []
+          };
           return this.petService.createPet(newPet, this.account.userId).then(petId => {
               return this.addPetRefToAccount(newPet, petId);
           });
       }
+  }
+
+  private updateVetList(newVetList: Vet[]): Observable<Vet[]> {
+      return this.vetsService.updateVetList(this.account.userId, newVetList)
   }
 
   private addPetRefToAccount(newPet: Pet, petId: string): Pet {

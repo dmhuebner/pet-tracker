@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Pet } from '../../../pet/interfaces/pet.interface';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({

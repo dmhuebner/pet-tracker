@@ -28,4 +28,8 @@ export class PetProfileContainerComponent implements OnInit {
     return this.petService.updatePet(editedPet);
   }
 
+  onProfileImageUpload(file: File) {
+    this.petService.uploadPetImage(this.pet, file).subscribe();
+  }
+
 }

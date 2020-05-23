@@ -1,0 +1,8 @@
+<section class="medications-container">
+    <hr>
+    <app-medications-list
+            [medications]="meds"
+            (deleteMed)="confirmMedDelete($event)"
+            (completedMed)="confirmCompleteMed($event)">
+    </app-medications-list>
+</section>

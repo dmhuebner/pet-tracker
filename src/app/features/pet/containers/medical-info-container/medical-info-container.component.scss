@@ -1,0 +1,30 @@
+.medical-info-card {
+
+  .vet-info-title.vet-info-open,
+  .vet-info-description.vet-info-open,
+  .shots-info-title.shots-info-open,
+  .shots-info-description.shots-info-open,
+  .meds-info-title.meds-info-open,
+  .meds-info-description.meds-info-open{
+    margin-top: 0.7rem
+  }
+
+  hr.title-hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .add-vet-btn,
+  .add-shot-btn,
+  .add-med-btn {
+    font-size: 0.8rem;
+    margin: 0 0.8rem;
+
+    mat-icon{
+      font-size: 1.3rem;
+    }
+  }
+
+}

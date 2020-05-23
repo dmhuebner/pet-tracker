@@ -1,0 +1,36 @@
+.medication-container {
+  .medication-header {
+    display: flex;
+
+    .description-container {
+      margin-left: 3rem;
+
+      p {
+        margin-top: 1rem;
+      }
+    }
+
+    .header-btn-group {
+      margin-left: auto;
+
+      .complete-btn {
+        color: green;
+      }
+
+      .delete-btn {
+        color: #999;
+      }
+    }
+  }
+
+  .medication-body {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.med-hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #fff;
+}

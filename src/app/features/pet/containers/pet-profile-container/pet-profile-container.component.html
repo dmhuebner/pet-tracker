@@ -1,12 +1,16 @@
-<h2>{{pet?.name}}</h2>
-<app-pet-profile *ngIf="!editModeOn; else editPetProfileUI"
-        [pet]="pet"
-        (editModeOn)="toggleEditMode()">
-</app-pet-profile>
-<ng-template #editPetProfileUI>
-    <app-edit-pet-profile
-            [pet]="pet"
-            (editModeOff)="toggleEditMode()"
-            (editedPet)="onPetEdited($event)">
-    </app-edit-pet-profile>
-</ng-template>
+<section class="profile-container">
+    <h2>{{pet?.name}}</h2>
+    <app-pet-profile *ngIf="!editModeOn; else editPetProfileUI"
+                     [pet]="pet"
+                     (editModeOn)="toggleEditMode()">
+    </app-pet-profile>
+    <ng-template #editPetProfileUI>
+        <app-edit-pet-profile
+                [pet]="pet"
+                (editModeOff)="toggleEditMode()"
+                (editedPet)="onPetEdited($event)"
+                (profileImageUploaded)="onProfileImageUpload($event)">
+        </app-edit-pet-profile>
+    </ng-template>
+
+</section>

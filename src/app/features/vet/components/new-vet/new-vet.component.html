@@ -1,0 +1,6 @@
+<h3>New Vet</h3>
+<app-vet-form
+        [petList]="petList"
+        (cancelled)="close()"
+        (submitted)="saveNewVet($event)">
+</app-vet-form>

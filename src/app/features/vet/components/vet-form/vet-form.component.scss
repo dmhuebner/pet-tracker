@@ -1,0 +1,48 @@
+.vet-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #eee;
+
+  .vet-form {
+
+    .checkbox-container {
+      margin: 1.5rem;
+    }
+
+    .short-field-row {
+      display: flex;
+
+      .short-width-field {
+        width: 100%;
+
+        &:nth-child(1) {
+          margin-right: 0.5rem;
+        }
+
+        &:nth-child(2) {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    .full-width-field {
+      width: 100%;
+    }
+
+    .btn-group {
+      display: flex;
+
+      .left-btns {
+        button {
+          margin: 1rem;
+        }
+      }
+
+      .right-btns {
+        margin-left: auto;
+      }
+    }
+  }
+}

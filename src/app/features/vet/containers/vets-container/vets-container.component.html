@@ -1,0 +1,21 @@
+<app-vets-list
+        [vets]="vets"
+        [petList]="petList"
+        [showPetList]="showPetList"
+        (vetEdited)="updateVet($event)"
+        (vetDeleted)="openDeleteConfirm($event)"
+        (petClicked)="onPetClicked($event)">
+    <header class="vet-list-header">
+        <ng-content></ng-content>
+        <div class="btn-group">
+            <button mat-raised-button
+                    *ngIf="!petId"
+                    class="add-vet-btn"
+                    color="primary"
+                    aria-label="New vet"
+                    (click)="onNewVetClicked()">
+                <mat-icon>add</mat-icon> New Vet
+            </button>
+        </div>
+    </header>
+</app-vets-list>
