@@ -1,6 +1,14 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MedicalEvent } from '../../interfaces/medical-event.interface';
 
+const MEDICAL_EVENT_PROPS = [
+  { label: 'Summary', value: 'summary' },
+  { label: 'Event Type', value: 'type' },
+  { label: 'Time of Event', value: 'timestamp' },
+  { label: 'Notes', value: 'notes' },
+  { label: 'Medical Attention Required', value: 'medicalAttentionRequired' }
+];
+
 @Component({
   selector: 'app-medical-events',
   templateUrl: './medical-events.component.html',
@@ -11,13 +19,11 @@ export class MedicalEventsComponent implements OnInit, OnChanges {
   @Input() medicalEvents: MedicalEvent[];
 
   sortedMedicalEvents: MedicalEvent[];
-  eventSortOptions = [
-      { label: 'Summary', value: 'summary' },
-      { label: 'Type', value: 'type' },
-      { label: 'Timestamp', value: 'timestamp' },
-      { label: 'Notes', value: 'notes' },
-      { label: 'Medical Attention Required', value: 'medicalAttentionRequired' }
-  ];
+  eventSortOptions = MEDICAL_EVENT_PROPS;
+  eventFilterPropOptions = MEDICAL_EVENT_PROPS;
+  eventSortBy: string;
+  eventFilterValue: string;
+  eventFilterByProp: string;
 
   constructor() { }
 
@@ -29,8 +35,7 @@ export class MedicalEventsComponent implements OnInit, OnChanges {
 
   }
 
-  onSort(sortBy) {
-    sortBy = sortBy.value;
+  onSort(sortBy = this.eventSortBy) {
 
     const compareMedEvents = (eventA, eventB) => {
       if (eventA[sortBy] > eventB[sortBy]) {
@@ -49,6 +54,24 @@ export class MedicalEventsComponent implements OnInit, OnChanges {
     } else {
       this.sortedMedicalEvents = this.medicalEvents.sort(compareMedEvents);
     }
+    this.onFilter();
+
+    this.eventSortBy = sortBy;
+  }
+
+  onFilter() {
+    if (this.eventFilterValue) {
+      console.log('filterByEvent', this.eventFilterValue);
+      this.sortedMedicalEvents = this.sortedMedicalEvents.filter(medEvent => {
+        console.log('eventFilterByProp', this.eventFilterByProp);
+        return medEvent[this.eventFilterByProp]?.toLowerCase()
+            .includes(this.eventFilterValue.toLowerCase());
+      });
+    }
+  }
+
+  onFilterPropSet(filterByProp) {
+    this.eventFilterByProp = filterByProp.value;
   }
 
   private compareMedEventsByTimestamp(eventA, eventB) {

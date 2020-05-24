@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { EditPetProfileComponent } from './components/edit-pet-profile/edit-pet-profile.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PetProfileFormComponent } from './components/pet-profile-form/pet-profile-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { BirthdayToAgePipe } from './pipes/birthday-to-age.pipe';
@@ -86,7 +86,8 @@ import { NewMedicalEventComponent } from './containers/new-medical-event/new-med
         MatTableModule,
         MatSortModule,
         MatSelectModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        FormsModule
     ]
 })
 export class PetModule { }

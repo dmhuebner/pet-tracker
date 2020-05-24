@@ -5,7 +5,7 @@
                     appearance="outline"
                     class="full-width-field">
                 <mat-label>Sort By</mat-label>
-                <mat-select (selectionChange)="onSort($event)">
+                <mat-select (selectionChange)="onSort($event.value)">
                     <mat-option
                             *ngFor="let option of eventSortOptions"
                             [value]="option.value">
@@ -15,7 +15,26 @@
             </mat-form-field>
         </div>
         <div class="filter-by-container">
-            Filter By
+            <mat-form-field
+                    appearance="outline"
+                    class="full-width-field">
+                <mat-label>Filter By</mat-label>
+                <mat-select (selectionChange)="onFilterPropSet($event)">
+                    <mat-option
+                            *ngFor="let option of eventFilterPropOptions"
+                            [value]="option.value">
+                        {{option.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width-field">
+                <mat-label>Filter Value</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       [(ngModel)]="eventFilterValue"
+                       (ngModelChange)="onSort(); onFilter();">
+            </mat-form-field>
         </div>
     </header>
     <div class="medical-events-container">
