@@ -1,0 +1,80 @@
+<div class="form-container">
+    <form [formGroup]="medicalEventForm" class="med-event-form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Summary</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   required
+                   formControlName="summary">
+        </mat-form-field>
+        <div class="short-field-row">
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Date</mat-label>
+                <input matInput
+                       [matDatepicker]="medEventDatePicker"
+                       autocomplete="off"
+                       required
+                       formControlName="timestamp"
+                       (change)="addDateToTimestamp()">
+                <mat-datepicker-toggle
+                        matSuffix [for]="medEventDatePicker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #medEventDatePicker>
+                </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Time</mat-label>
+                <input matInput
+                       type="time"
+                       autocomplete="off"
+                       (change)="addTimeToTimestamp($event)">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field
+                appearance="outline"
+                class="full-width-field"
+                *ngIf="medEventTypes?.length">
+            <mat-label>Event Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option
+                        *ngFor="let type of medEventTypes"
+                        [value]="type">
+                    {{type}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width-field">
+            <mat-label>Notes</mat-label>
+            <textarea matInput
+                      autocomplete="off"
+                      formControlName="notes">
+            </textarea>
+        </mat-form-field>
+        <div class="full-width-field">
+            <div class="checkbox-container">
+                <mat-checkbox
+                        formControlName="medicalAttentionRequired">
+                    Medical Attention Required
+                </mat-checkbox>
+            </div>
+        </div>
+        <pre>{{medicalEventForm.value | json}}</pre>
+
+        <div class="btn-group">
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="medicalEventForm.invalid"
+                    type="submit">
+                Save
+            </button>
+            <button mat-raised-button
+                    color="secondary"
+                    (click)="cancel()"
+                    type="button">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>

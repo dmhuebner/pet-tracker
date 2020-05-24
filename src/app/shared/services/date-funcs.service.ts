@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, add } from 'date-fns';
 
 
 @Injectable({
@@ -13,5 +13,9 @@ export class DateFuncsService {
     const birthDate = new Date(birthday);
     console.log('birthDate', birthDate);
     return formatDistanceToNow(birthday);
+  }
+
+  addTimeToDate(targetDate: Date, hours: number, minutes: number) {
+    return add(targetDate, {hours, minutes});
   }
 }

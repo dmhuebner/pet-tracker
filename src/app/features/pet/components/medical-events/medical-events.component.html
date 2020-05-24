@@ -7,10 +7,12 @@
             Filter By
         </div>
     </header>
-    <div class="medical-event-container"
-         *ngFor="let medicalEvent of medicalEvents">
-        <app-medical-event
-                [medicalEvent]="medicalEvent">
-        </app-medical-event>
+    <div class="medical-events-container">
+        <div class="medical-event-container"
+             *ngFor="let medicalEvent of medicalEvents">
+            <app-medical-event
+                    [medicalEvent]="medicalEvent">
+            </app-medical-event>
+        </div>
     </div>
 </section>

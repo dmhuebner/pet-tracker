@@ -1,0 +1,7 @@
+<section class="new-med-event-container">
+    <h3>New Medical Event</h3>
+    <app-medical-event-form
+            (submitted)="onSubmit($event)"
+            (cancelled)="close()">
+    </app-medical-event-form>
+</section>
