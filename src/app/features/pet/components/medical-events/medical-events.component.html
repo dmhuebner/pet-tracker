@@ -1,7 +1,18 @@
 <section class="medical-events-container">
     <header class="medical-events-header">
         <div class="sort-by-container">
-            Sort By
+            <mat-form-field
+                    appearance="outline"
+                    class="full-width-field">
+                <mat-label>Sort By</mat-label>
+                <mat-select (selectionChange)="onSort($event)">
+                    <mat-option
+                            *ngFor="let option of eventSortOptions"
+                            [value]="option.value">
+                        {{option.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
         <div class="filter-by-container">
             Filter By
@@ -9,7 +20,7 @@
     </header>
     <div class="medical-events-container">
         <div class="medical-event-container"
-             *ngFor="let medicalEvent of medicalEvents">
+             *ngFor="let medicalEvent of sortedMedicalEvents">
             <app-medical-event
                     [medicalEvent]="medicalEvent">
             </app-medical-event>
