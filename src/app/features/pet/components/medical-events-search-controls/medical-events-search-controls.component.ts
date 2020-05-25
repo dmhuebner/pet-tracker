@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MedicalEvent } from '../../interfaces/medical-event.interface';
+import { DateFuncsService } from '../../../../shared/services/date-funcs.service';
 
 const MEDICAL_EVENT_PROPS = [
   { label: 'Event Type', value: 'type' },
@@ -23,11 +24,16 @@ export class MedicalEventsSearchControlsComponent implements OnInit, OnChanges {
   eventSortOptions = MEDICAL_EVENT_PROPS;
   eventFilterPropOptions = [...MEDICAL_EVENT_PROPS, { label: 'Notes', value: 'notes' }];
   availableEventTypes = ['Digestive', 'Emergency', 'Ingestion', 'Injury', 'Surgery'];
+  availableTimespans = [
+      {label: 'Last Week', value: 'week'},
+      {label: 'Last Month', value: 'month'},
+      {label: 'Last Year', value: 'year'}
+  ];
   eventSortBy = 'timestamp';
   eventFilterValue: string;
   eventFilterByProp: string;
 
-  constructor() { }
+  constructor(private dateService: DateFuncsService) { }
 
   ngOnInit(): void {
     this.sortedMedicalEvents = this.medicalEvents.sort(this.compareMedEventsByTimestamp);
@@ -49,7 +55,6 @@ export class MedicalEventsSearchControlsComponent implements OnInit, OnChanges {
       this.filterMedicalEvents(this.eventFilterByProp, this.eventFilterValue);
     }
 
-
     this.medicalEventsSorted.emit(this.sortedMedicalEvents);
   }
 
@@ -61,6 +66,9 @@ export class MedicalEventsSearchControlsComponent implements OnInit, OnChanges {
         });
         break;
       case 'timestamp':
+        filterValue = filterValue || 'week';
+        this.eventFilterValue = filterValue;
+        this.filterMedEventsByTimestamp(filterValue);
         break;
       default:
         if (this.eventFilterValue) {
@@ -71,6 +79,24 @@ export class MedicalEventsSearchControlsComponent implements OnInit, OnChanges {
         }
         break;
     }
+  }
+
+  private filterMedEventsByTimestamp(filterValue: string) {
+    let dateToFilterWith = new Date();
+    switch (filterValue) {
+      case 'week':
+        dateToFilterWith = this.dateService.subtractTimeFromDate(dateToFilterWith, 1);
+        break;
+      case 'month':
+        dateToFilterWith = this.dateService.subtractTimeFromDate(dateToFilterWith, 0, 1);
+        break;
+      case 'year':
+        dateToFilterWith = this.dateService.subtractTimeFromDate(dateToFilterWith, 0, 0, 1);
+        break;
+    }
+    this.sortedMedicalEvents = this.sortedMedicalEvents.filter(medEvent => {
+      return medEvent.timestamp.toDate() > dateToFilterWith;
+    });
   }
 
   private sortMedicalEvents(sortBy) {

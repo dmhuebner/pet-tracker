@@ -51,6 +51,22 @@
         </mat-form-field>
 
         <mat-form-field
+                *ngIf="eventFilterByProp === 'timestamp'"
+                appearance="outline"
+                class="full-width-field">
+            <mat-label>Timespan</mat-label>
+            <mat-select
+                    [(ngModel)]="eventFilterValue"
+                    (ngModelChange)="onSearchControlChange()">
+                <mat-option
+                        *ngFor="let timespan of availableTimespans"
+                        [value]="timespan.value">
+                    {{timespan.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
                 appearance="outline"
                 class="full-width-field"
                 *ngIf="eventFilterByProp !== 'medicalAttentionRequired' &&
