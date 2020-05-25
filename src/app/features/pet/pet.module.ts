@@ -37,6 +37,7 @@ import { MedicalEventsComponent } from './components/medical-events/medical-even
 import { MedicalEventComponent } from './components/medical-event/medical-event.component';
 import { MedicalEventFormComponent } from './components/medical-event-form/medical-event-form.component';
 import { NewMedicalEventComponent } from './containers/new-medical-event/new-medical-event.component';
+import { MedicalEventsSearchControlsComponent } from './components/medical-events-search-controls/medical-events-search-controls.component';
 
 
 
@@ -63,6 +64,7 @@ import { NewMedicalEventComponent } from './containers/new-medical-event/new-med
         MedicalEventComponent,
         MedicalEventFormComponent,
         NewMedicalEventComponent,
+        MedicalEventsSearchControlsComponent,
     ],
     exports: [
         PetProfileContainerComponent,
