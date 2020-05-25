@@ -1,7 +1,9 @@
 .medical-events-container {
 
-  .medical-events-container {
+  .medical-events-content {
     max-height: 40rem;
     overflow: scroll;
+    -webkit-box-shadow: inset 0 -2px 4px 1px #eee;
+    box-shadow: inset 0 2px 4px 2px #ededed;
   }
 }
