@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MedicalEvent } from '../../interfaces/medical-event.interface';
 
 @Component({
@@ -9,10 +9,15 @@ import { MedicalEvent } from '../../interfaces/medical-event.interface';
 export class MedicalEventComponent implements OnInit {
 
   @Input() medicalEvent: MedicalEvent;
+  @Output() deleted = new EventEmitter<true>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDelete() {
+    this.deleted.emit(true);
   }
 
 }

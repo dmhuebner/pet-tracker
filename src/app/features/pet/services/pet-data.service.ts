@@ -16,7 +16,6 @@ export class PetDataService {
 
   getPet(petId: string): Observable<Pet> {
     const petDoc = this.petsCollectionRef.doc<Pet>(petId);
-    console.log('petDoc', petDoc);
     return petDoc.valueChanges();
   }
 
@@ -29,7 +28,6 @@ export class PetDataService {
   }
 
   updatePet(updatedPet: Pet): Promise<Pet> {
-    console.log('updatedPet', updatedPet);
     return this.petsCollectionRef.doc(updatedPet.id).update(updatedPet).then(() => updatedPet);
   }
 }

@@ -7,9 +7,10 @@
     </header>
     <div class="medical-events-content">
         <div class="medical-event-container"
-             *ngFor="let medicalEvent of sortedMedicalEvents">
+             *ngFor="let medicalEvent of sortedMedicalEvents; index as i">
             <app-medical-event
-                    [medicalEvent]="medicalEvent">
+                    [medicalEvent]="medicalEvent"
+                    (deleted)="onDelete(medicalEvent, i)">
             </app-medical-event>
         </div>
     </div>

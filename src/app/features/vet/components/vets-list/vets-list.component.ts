@@ -33,7 +33,6 @@ export class VetsListComponent implements OnInit {
 
   onVetDeleted(vetToDelete: Vet, index: number) {
     vetToDelete.index = index;
-    console.log('vetToDelete', vetToDelete);
     this.vetDeleted.emit(vetToDelete);
   }
 

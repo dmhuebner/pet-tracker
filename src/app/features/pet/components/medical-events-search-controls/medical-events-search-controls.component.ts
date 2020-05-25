@@ -119,7 +119,6 @@ export class MedicalEventsSearchControlsComponent implements OnInit, OnChanges {
         break;
       default:
         this.sortedMedicalEvents = this.medicalEvents.sort(compareMedEvents);
-        console.log('AFTER SORTING!', this.sortedMedicalEvents);
     }
   }
 

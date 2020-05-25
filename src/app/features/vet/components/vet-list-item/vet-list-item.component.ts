@@ -30,7 +30,6 @@ export class VetListItemComponent implements OnInit {
   }
 
   onVetEdited(vetForm: FormGroup) {
-    console.log(vetForm.value);
     if (vetForm.valid) {
       const editedPet = {...this.vet, ...vetForm.value};
       this.vetEdited.emit(editedPet);

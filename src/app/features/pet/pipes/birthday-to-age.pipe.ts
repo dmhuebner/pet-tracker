@@ -11,7 +11,6 @@ export class BirthdayToAgePipe implements PipeTransform {
   constructor(private dateFuncs: DateFuncsService) {}
 
   transform(timestamp: Timestamp, ...args: unknown[]): unknown {
-    console.log('Date', timestamp.toDate());
     return this.dateFuncs.formatDistanceToNow(timestamp.toDate());
   }
 

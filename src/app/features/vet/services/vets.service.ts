@@ -4,7 +4,6 @@ import { VetsStateService } from './vets-state.service';
 import { Observable, of } from 'rxjs';
 import { Vet } from '../interfaces/vet.interface';
 import { catchError, switchMap } from 'rxjs/operators';
-import { VetsList } from '../interfaces/vets-list.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,6 @@ export class VetsService {
   }
 
   getVets(userId: string): Observable<Vet[]> {
-      console.log('Getting Vets', userId);
     return this.vetsData.getVetsData(userId).pipe(
         switchMap(vets => {
             if (vets) {
@@ -42,7 +40,6 @@ export class VetsService {
       if (indexToUpdate > -1) {
           delete vetToUpdate.index;
           updatedVetList[indexToUpdate] = vetToUpdate;
-          console.log('updatedVetList', updatedVetList);
           return this.vetsData.updateVetList(userId, updatedVetList);
       }
   }

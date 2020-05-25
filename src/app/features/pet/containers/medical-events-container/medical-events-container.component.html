@@ -1,5 +1,6 @@
-<section class="medical-events-container">
+<section class="medical-events-container" *ngIf="pet.medical.medicalEvents">
     <app-medical-events
-            [medicalEvents]="medicalEvents">
+            [medicalEvents]="pet.medical.medicalEvents"
+            (eventDeleted)="openDeleteMedEventDialog($event)">
     </app-medical-events>
 </section>
