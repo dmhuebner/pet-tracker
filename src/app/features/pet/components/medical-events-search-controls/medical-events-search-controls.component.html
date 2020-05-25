@@ -1,0 +1,82 @@
+<div class="search-controls-container">
+    <div class="sort-by-container">
+        <mat-form-field
+                appearance="outline"
+                class="full-width-field">
+            <mat-label>Sort By</mat-label>
+            <mat-select [(ngModel)]="eventSortBy"
+                        (ngModelChange)="onSearchControlChange()">
+                <ng-container *ngFor="let option of eventSortOptions">
+                    <mat-option
+                            *ngIf="option.value !== eventFilterByProp"
+                            [value]="option.value">
+                        {{option.label}}
+                    </mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="filter-by-container">
+        <mat-form-field
+                appearance="outline"
+                class="full-width-field">
+            <mat-label>Filter By</mat-label>
+            <mat-select
+                    [(ngModel)]="eventFilterByProp"
+                    (ngModelChange)="eventFilterValue = ''; onSearchControlChange()">
+                <mat-option></mat-option>
+                <mat-option
+                        *ngFor="let option of eventFilterPropOptions"
+                        [value]="option.value">
+                    {{option.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+                *ngIf="eventFilterByProp === 'type'"
+                appearance="outline"
+                class="full-width-field">
+            <mat-label>Type of Event</mat-label>
+            <mat-select
+                    [(ngModel)]="eventFilterValue"
+                    (ngModelChange)="onSearchControlChange()">
+                <mat-option
+                        *ngFor="let type of availableEventTypes"
+                        [value]="type">
+                    {{type}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+                *ngIf="eventFilterByProp === 'timestamp'"
+                appearance="outline"
+                class="full-width-field">
+            <mat-label>Timespan</mat-label>
+            <mat-select
+                    [(ngModel)]="eventFilterValue"
+                    (ngModelChange)="onSearchControlChange()">
+                <mat-option
+                        *ngFor="let timespan of availableTimespans"
+                        [value]="timespan.value">
+                    {{timespan.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
+                appearance="outline"
+                class="full-width-field"
+                *ngIf="eventFilterByProp !== 'medicalAttentionRequired' &&
+                    eventFilterByProp !== 'timestamp' &&
+                    eventFilterByProp !== 'type'">
+            <mat-label>Filter Value</mat-label>
+            <input matInput
+                   autocomplete="off"
+                   [(ngModel)]="eventFilterValue"
+                   (ngModelChange)="onSearchControlChange()">
+        </mat-form-field>
+    </div>
+</div>

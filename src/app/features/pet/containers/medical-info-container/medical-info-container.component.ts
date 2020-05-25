@@ -12,6 +12,10 @@ import { Vet } from '../../../vet/interfaces/vet.interface';
 import { PetService } from '../../services/pet.service';
 import { NewMedicationContainerComponent } from '../new-medication-container/new-medication-container.component';
 import { Medication } from '../../interfaces/medication.interface';
+import { NewMedicalEventComponent } from '../new-medical-event/new-medical-event.component';
+import { MedicalEvent } from '../../interfaces/medical-event.interface';
+import Timestamp = firebase.firestore.Timestamp;
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-medical-info-container',
@@ -27,6 +31,7 @@ export class MedicalInfoContainerComponent implements OnInit {
   vetInfoOpen = false;
   shotsInfoOpen = false;
   medsInfoOpen = false;
+  medEventsOpen = false;
   vets: Vet[];
   unsubscribe$ = new Subject<true>();
 
@@ -79,8 +84,29 @@ export class MedicalInfoContainerComponent implements OnInit {
     });
   }
 
+  openAddMedicalEventDialog(): void {
+    const dialogRef = this.dialog.open(NewMedicalEventComponent, {
+      minWidth: '400px'
+    });
+
+    dialogRef.afterClosed().pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(newEvent => {
+      if (newEvent) {
+        this.addMedicalEvent(newEvent);
+      }
+    });
+  }
+
   private addPetShot(shot: PetShot) {
     this.pet.medical.shots.push(shot);
+    this.petService.updatePet(this.pet)
+  }
+
+  private addMedicalEvent(medicalEvent: MedicalEvent) {
+    const timestampDat: any = medicalEvent.timestamp;
+    medicalEvent.timestamp = new Timestamp(timestampDat?.getTime() / 1000, 0);
+    this.pet.medical.medicalEvents.push(medicalEvent);
     this.petService.updatePet(this.pet)
   }
 
