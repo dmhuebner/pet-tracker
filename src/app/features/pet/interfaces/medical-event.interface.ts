@@ -7,4 +7,5 @@ export interface MedicalEvent {
     summary: string;
     notes: string;
     medicalAttentionRequired: boolean;
+    index?: number;
 }

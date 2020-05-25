@@ -40,12 +40,10 @@ export class AccountContainerComponent implements OnInit, OnDestroy {
           return user ? this.accountService.getAccount(user) : EMPTY;
         }),
         catchError(err => {
-            console.log('err', err);
             return throwError(err);
         }),
         takeUntil(this.unsubscribe$)
     ).subscribe(account => {
-        console.log('account', account);
         this.account = account
     });
   }

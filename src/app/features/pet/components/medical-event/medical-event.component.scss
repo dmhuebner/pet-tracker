@@ -11,10 +11,19 @@
       color: #4455df;
     }
   }
+
+  .btn-group {
+    margin-left: auto;
+    color: #ccc;
+  }
 }
 
 @media all and (max-width: 700px) {
   .medical-event-container {
     flex-direction: column;
+
+    .btn-group {
+      order: -1;
+    }
   }
 }

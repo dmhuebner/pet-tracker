@@ -15,7 +15,6 @@ export class AccountDataService {
   getAccountData(userId: string): Observable<Account> {
     this.accountCollectionRef = this.afs.collection('accounts');
     const accountDoc = this.accountCollectionRef.doc(userId);
-    console.log('accountDoc', accountDoc);
     return accountDoc.valueChanges();
   }
 

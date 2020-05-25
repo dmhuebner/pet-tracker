@@ -21,7 +21,6 @@ export class MedicationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.medForm = this.initMedForm();
-    console.log('vets', this.vets);
   }
 
   initMedForm() {

@@ -18,7 +18,6 @@ export class NewVetComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    console.log('data', this.data);
     this.allVets = this.data.allVets;
     this.petList = this.data.petList;
   }

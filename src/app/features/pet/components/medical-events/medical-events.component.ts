@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MedicalEvent } from '../../interfaces/medical-event.interface';
 
 @Component({
@@ -10,6 +10,8 @@ export class MedicalEventsComponent implements OnInit {
 
   @Input() medicalEvents: MedicalEvent[];
 
+  @Output() eventDeleted = new EventEmitter<MedicalEvent>();
+
   sortedMedicalEvents: MedicalEvent[];
 
   ngOnInit(): void {
@@ -17,8 +19,12 @@ export class MedicalEventsComponent implements OnInit {
   }
 
   updateMedicalEventsList(updatedMedicalEvents: MedicalEvent[]) {
-    console.log('updatedMedicalEvents', updatedMedicalEvents);
     this.sortedMedicalEvents = updatedMedicalEvents;
+  }
+
+  onDelete(medEventToDelete: MedicalEvent, indexToDelete: number) {
+    medEventToDelete.index = indexToDelete;
+    this.eventDeleted.emit(medEventToDelete);
   }
 
 }
