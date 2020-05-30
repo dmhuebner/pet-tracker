@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { AccountService } from '../../features/account/services/account.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { EMPTY, Subject } from 'rxjs';
 import { PetService } from '../../features/pet/services/pet.service';
 import { ActivatedRoute } from '@angular/router';
@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             } else {
                 return EMPTY;
             }
-        })
+        }),
+        takeUntil(this.unsubscribe$)
     ).subscribe(pet => {
       this.currentPet = pet;
     });

@@ -39,9 +39,9 @@ export class MedicalEventsContainerComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().pipe(
         takeUntil(this.unsubscribe$)
-    ).subscribe(deleteConfirmed => {
+    ).subscribe(async deleteConfirmed => {
       if (deleteConfirmed) {
-        this.deleteMedicalEvent(medEventToDelete.index);
+        await this.deleteMedicalEvent(medEventToDelete.index);
       }
     });
 
