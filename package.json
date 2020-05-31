@@ -25,7 +25,6 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
-    "cors": "^2.8.5",
     "date-fns": "^2.12.0",
     "express": "latest",
     "firebase": "^7.13.2",
