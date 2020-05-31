@@ -5,12 +5,13 @@
 export const environment = {
     production: false,
     firebase: {
-        apiKey: 'AIzaSyAfLJpmw-AFWapBAFFiRXlCX5jhWsLtlTE',
-        authDomain: 'pet-tracker-dev.firebaseapp.com',
-        databaseURL: 'https://pet-tracker-dev.firebaseio.com',
-        projectId: 'pet-tracker-dev',
-        storageBucket: 'pet-tracker-dev.appspot.com',
-        messagingSenderId: '444778270428',
+        apiKey: 'AIzaSyALJhzcJq1m1VG7itbFVwh6MnAEbwza02I',
+        authDomain: 'pet-tracker-prod3.firebaseapp.com',
+        databaseURL: 'https://pet-tracker-prod3.firebaseio.com',
+        projectId: 'pet-tracker-prod3',
+        storageBucket: 'pet-tracker-prod3.appspot.com',
+        messagingSenderId: '1030732427088',
+        appId: '1:1030732427088:web:7a5f17eed1d0331ba30655'
     }
 };
 
