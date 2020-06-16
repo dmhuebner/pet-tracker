@@ -1,6 +1,7 @@
 .card-header {
   .profile-image {
     width: 10rem;
+    height: 100%;
 
     img {
       width: 100%;
@@ -20,9 +21,10 @@
 }
 
 .card-content {
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   .pet-description {
     font-family: sans-serif;
+    line-height: 1.3rem;
   }
 }

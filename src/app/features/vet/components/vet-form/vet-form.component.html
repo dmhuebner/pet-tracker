@@ -15,13 +15,21 @@
                        formControlName="drName">
             </mat-form-field>
         </div>
-        <mat-form-field appearance="outline" class="full-width-field">
-            <mat-label>Vet Address</mat-label>
-            <input matInput
-                   autocomplete="off"
-                   required
-                   formControlName="address">
-        </mat-form-field>
+        <div class="short-field-row">
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Vet Address</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       required
+                       formControlName="address">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="short-width-field">
+                <mat-label>Vet Website</mat-label>
+                <input matInput
+                       autocomplete="off"
+                       formControlName="website">
+            </mat-form-field>
+        </div>
         <div class="short-field-row">
             <div class="short-width-field">
                 <div class="checkbox-container">
