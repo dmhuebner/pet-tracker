@@ -16,6 +16,7 @@ import { AccountModule } from './features/account/account.module';
 import { PetModule } from './features/pet/pet.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
         AccountModule,
         PetModule,
         MatCardModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatButtonModule
     ],
   providers: [],
   bootstrap: [AppComponent]

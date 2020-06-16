@@ -13,12 +13,12 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    // this.auth.user$.subscribe(user => {
-    //   console.log('user', user);
-    //   // if (user) {
-    //   //   this.router.navigate(['/home'])
-    //   // }
-    // });
+  }
+
+  login() {
+    this.auth.login().then(() => {
+      return this.router.navigate(['account'])
+    });
   }
 
 }
