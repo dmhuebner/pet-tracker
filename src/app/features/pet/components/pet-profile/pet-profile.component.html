@@ -3,10 +3,10 @@
         <mat-card-header class="card-header">
             <div mat-card-avatar class="profile-image">
                 <img src="{{pet.profileImages[pet.profileImages.length - 1]}}"
-                     *ngIf="pet.profileImages?.length > 1"
+                     *ngIf="pet.profileImages?.length > 0"
                      alt="Pet Profile Image">
                 <img src="https://via.placeholder.com/150"
-                     *ngIf="pet.profileImages?.length <= 1"
+                     *ngIf="pet.profileImages?.length <= 0"
                      alt="Pet Profile Image">
             </div>
             <mat-card-title>Profile</mat-card-title>
