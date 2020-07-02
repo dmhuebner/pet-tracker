@@ -30,3 +30,12 @@
   }
 
 }
+
+@media all and (max-width: 720px) {
+  .vet-info-description.vet-info-open,
+  .shots-info-description.shots-info-open,
+  .meds-info-description.meds-info-open,
+  .med-events-description.med-events-open {
+    display: none;
+  }
+}
