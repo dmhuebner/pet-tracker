@@ -28,3 +28,11 @@
     line-height: 1.3rem;
   }
 }
+
+@media all and (max-width: 520px) {
+  .card-header {
+    .profile-image {
+      width: 6rem;
+    }
+  }
+}
