@@ -8,7 +8,7 @@
 
   .inner-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 1rem;
 
     .info-panel {
@@ -43,7 +43,6 @@
       }
 
       &.left-panel {
-        min-width: 20rem;
 
         .vet-name {
 
@@ -85,11 +84,16 @@ hr.vet-info-item-hr {
 }
 
 
-@media all and (max-width: 790px) {
+@media all and (min-width: 820px) {
   .vet-container {
     .inner-wrapper {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      flex-direction: row;
+
+      .info-panel.left-panel {
+        min-width: 20rem;
+      }
     }
   }
 }
